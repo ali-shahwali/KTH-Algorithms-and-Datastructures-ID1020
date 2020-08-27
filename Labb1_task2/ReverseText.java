@@ -10,15 +10,11 @@ public class ReverseText
         Scanner sys = new Scanner(System.in);
 
         System.out.println("Enter your text ");
-
-        String text = sys.nextLine();
-        char[] textArr = new char[text.length()];
-        for(int i = 0; i < text.length(); i++)
-            textArr[i] = text.charAt(i);
-
         Stack stack = new Stack();
-        for(int i = 0; i < textArr.length; i++)
-            stack.push(textArr[i]);
+        String text = sys.nextLine();
+        
+        for(int i = 0; i < text.length(); i++)
+            stack.push(text.charAt(i));
 
         System.out.println("Type 1 for iterative, else recursive");
         int i = sys.nextInt();
