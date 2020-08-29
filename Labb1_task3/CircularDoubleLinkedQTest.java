@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package DoubleCircLinkedList;
 
 import java.util.Scanner;
@@ -45,3 +46,28 @@ public class CircularDoubleLinkedQTest
 
     }
 }
+=======
+package DoubleCircLinkedList;
+
+import java.util.Iterator;
+
+public class CircularDoubleLinkedQTest
+{
+    public static void main(String[] args)
+    {
+        CircularDoubleQ<String> queue = new CircularDoubleQ<String>();
+
+        queue.enqueue("First text");
+        queue.enqueue("Second text");
+        queue.enqueue("Third text");
+
+        DoublyLinkedIterator itr = queue.DoublyLinkedIterator();
+
+        itr.prev();
+        itr.prev();
+        itr.prev();
+        itr.prev();
+
+    }
+}
+>>>>>>> 2a333ce8ce4414817ecbc193e0d0c09bccafe095
