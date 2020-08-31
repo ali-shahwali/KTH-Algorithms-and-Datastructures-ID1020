@@ -25,7 +25,7 @@ void iterativeReverse(char* str, int len)
 int main(void)
 {
     char ch;
-    char* str;
+    char* str = (char*) malloc(50* sizeof(char));
     int length = 0;
     printf("enter your characters ");
     while(ch != '\n')
