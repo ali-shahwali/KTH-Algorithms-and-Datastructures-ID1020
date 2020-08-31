@@ -12,16 +12,19 @@ public class ReverseText
         System.out.println("Enter your text ");
         Stack stack = new Stack();
         String text = sys.nextLine();
-        
+        char[] arr = new char[text.length()];
         for(int i = 0; i < text.length(); i++)
             stack.push(text.charAt(i));
+
+        for(int i = 0; i < text.length(); i++)
+            arr[i] = text.charAt(i);
 
         System.out.println("Type 1 for iterative, else recursive");
         int i = sys.nextInt();
         if(i == 1)
             System.out.println(iterativeReverse(stack));
         else
-            recursiveReverse(stack);
+            recursiveReverse(arr, arr.length - 1);
 
     }
 
@@ -34,14 +37,13 @@ public class ReverseText
         return sb.toString();
     }
 
-    public static void recursiveReverse(Stack stack)
+    public static void recursiveReverse(char[] arr, int size)
     {
-        while(!stack.isEmpty())
+        if(size >= 0)
         {
-            System.out.print(stack.pop());
-            recursiveReverse(stack);
+            System.out.print(arr[size]);
+            recursiveReverse(arr, --size);
         }
-
     }
 
 }
