@@ -9,8 +9,6 @@ public class CircularDoubleLinkedQTest
         Scanner intScan = new Scanner(System.in);
         Scanner strScan = new Scanner(System.in);
 
-
-
         int i = 0;
         while(i != 4)
         {
