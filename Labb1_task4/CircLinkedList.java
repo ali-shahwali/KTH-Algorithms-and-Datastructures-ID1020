@@ -5,7 +5,6 @@ import java.util.NoSuchElementException;
 
 public class CircLinkedList<Item> implements Iterable<Item>
 {
-    private Node<Item> first;
     private Node<Item> last;
     private int size;
 
@@ -17,7 +16,6 @@ public class CircLinkedList<Item> implements Iterable<Item>
 
     public CircLinkedList()
     {
-        first = null;
         last = null;
         size = 0;
     }
@@ -39,44 +37,32 @@ public class CircLinkedList<Item> implements Iterable<Item>
             last = new Node<Item>();
             last.data = data;
             last.next = last;
-            first = last;
-        }
-        else if(size == 1)
-        {
-            first = new Node<Item>();
-            first.data = data;
-            first.next = last;
-            last.next = first;
         }
         else
         {
-            Node<Item> oldFirst = first;
-            first.data = data;
-            first.next = oldFirst;
-            last.next = first;
+            Node<Item> newFirst = new Node<Item>();
+            newFirst.data = data;
+            Node<Item> first = last.next;
+            newFirst.next = first;
+            last.next = newFirst;
         }
         size++;
     }
 
     public void addBack(Item data)
     {
-        if(isEmpty())
+        if (isEmpty())
         {
             last = new Node<Item>();
             last.data = data;
             last.next = last;
-            first = last;
-        }
-        else if(size == 1)
-        {
-
         }
         else
         {
             Node<Item> oldLast = last;
             last = new Node<Item>();
             last.data = data;
-            last.next = first;
+            last.next = oldLast.next;
             oldLast.next = last;
         }
         size++;
@@ -85,19 +71,13 @@ public class CircLinkedList<Item> implements Iterable<Item>
     public Item removeFront()
     {
         if(isEmpty())
-            throw new NoSuchElementException("Queue is already empty");
-
-        Item data = first.data;
+            throw new NoSuchElementException("Queue underflow");
+        Item data = last.next.data;
         if(size == 1)
-        {
             last = null;
-            first = null;
-        }
         else
-        {
-            first = first.next;
-            last.next = first;
-        }
+            last.next = last.next.next;
+
         size--;
         return data;
     }
@@ -105,23 +85,20 @@ public class CircLinkedList<Item> implements Iterable<Item>
     public Item removeBack()
     {
         if(isEmpty())
-            throw new NoSuchElementException("Queue is empty");
+            throw new NoSuchElementException("Queue underflow");
 
         Item data = last.data;
         if(size == 1)
-        {
             last = null;
-            first = null;
-        }
         else
         {
-            Node<Item> newLast = first;
-            while(newLast.next != last)
-                newLast = newLast.next;
+            Node<Item> first = last.next;
+            Node<Item> current = last.next;
+            while(current.next != last)
+                current = current.next;
 
-            last = newLast;
+            last = current;
             last.next = first;
-
         }
         size--;
         return data;
@@ -131,19 +108,16 @@ public class CircLinkedList<Item> implements Iterable<Item>
     public String toString()
     {
         StringBuilder sb = new StringBuilder("(");
-
-        Node<Item> current = last;
-        if(size == 1)
-        {
-            sb.append(current.data + ")");
-            return sb.toString();
-        }
-        while(current.next !=  last)
+        if(isEmpty())
+            return "Queue is now empty";
+        Node<Item> current = last.next;
+        while(current != last)
         {
             sb.append(current.data + ", ");
             current = current.next;
         }
         sb.append(current.data + ")");
+
         return sb.toString();
     }
 
@@ -171,6 +145,9 @@ public class CircLinkedList<Item> implements Iterable<Item>
 
         public Item next()
         {
+            if(!hasNext())
+                throw new NoSuchElementException();
+
             current = current.next;
             return current.data;
         }
