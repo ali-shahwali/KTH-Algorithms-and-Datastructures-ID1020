@@ -43,13 +43,16 @@ public class CircLinkedList<Item> implements Iterable<Item>
         }
         else if(size == 1)
         {
-
+            first = new Node<Item>();
+            first.data = data;
+            first.next = last;
+            last.next = first;
         }
         else
         {
             Node<Item> oldFirst = first;
-            first = new Node<Item>();
             first.data = data;
+            first.next = oldFirst;
             last.next = first;
         }
         size++;
