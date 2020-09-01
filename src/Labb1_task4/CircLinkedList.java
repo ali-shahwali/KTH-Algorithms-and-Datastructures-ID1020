@@ -117,7 +117,6 @@ public class CircLinkedList<Item> implements Iterable<Item>
             current = current.next;
         }
         sb.append(current.data + ")");
-
         return sb.toString();
     }
 
