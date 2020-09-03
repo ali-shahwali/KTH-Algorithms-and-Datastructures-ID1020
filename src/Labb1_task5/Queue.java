@@ -1,7 +1,5 @@
 package Labb1_task5;
 
-import Labb1_task4.CircLinkedList;
-
 import java.util.NoSuchElementException;
 
 public class Queue<Item>
@@ -64,13 +62,33 @@ public class Queue<Item>
             prev.next = newNode;
         }
         size++;
+        System.out.println(toString());
     }
 
 
     public Item dequeue(int k)
     {
-        if(k < 1 || k -1 > size)
-            throw new NoSuchElementException("Index out of bounds")
+        if(k < 1 || k - 1 > size)
+            throw new NoSuchElementException("Index out of bounds");
+        Item data;
+        if(size == 1)
+        {
+            data = first.data;
+            first = null;
+        }
+        else
+        {
+            Node<Item> current = first;
+            for(int i = 1; i < k - 1; i++)
+                current = current.next;
+
+            data = (current.next).data;
+            current.next = (current.next).next;
+
+        }
+        size--;
+        System.out.println(toString());
+        return data;
     }
 
     @Override
