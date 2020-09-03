@@ -42,9 +42,4 @@ public class Stack
         size--;
         return data;
     }
-
-    public char getFirst()
-    {
-        return first.data;
-    }
 }

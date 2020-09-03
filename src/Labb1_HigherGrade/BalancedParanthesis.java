@@ -29,10 +29,8 @@ public class BalancedParanthesis
                 stack.push(arr[i]);
             else if(arr[i] == (')' | ']' | '}'))
             {
-                if(stack.isEmpty() || stack.getFirst() != opposite(arr[i]))
+                if(stack.isEmpty() || stack.pop() != opposite(arr[i]))
                     return false;
-                else
-                    stack.pop();
             }
         }
         return stack.isEmpty();
