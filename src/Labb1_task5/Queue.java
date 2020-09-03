@@ -75,6 +75,12 @@ public class Queue<Item>
         {
             data = first.data;
             first = null;
+            return data;
+        }
+        if(k == 1)
+        {
+            data = first.data;
+            first = first.next;
         }
         else
         {
