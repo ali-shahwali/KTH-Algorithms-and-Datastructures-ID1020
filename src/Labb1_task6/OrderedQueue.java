@@ -33,8 +33,7 @@ public class OrderedQueue
 
     public void add(int data)
     {
-        if(isEmpty())
-        {
+        if(isEmpty()) {
             first = new Node();
             first.data = data;
             first.next = null;
@@ -46,8 +45,7 @@ public class OrderedQueue
             first.data = data;
             first.next = oldFirst;
         }
-        else
-        {
+        else {
             Node scan = first;
             Node prevScan = first;
             while(scan != null && data > scan.data)
@@ -94,7 +92,6 @@ public class OrderedQueue
         return data;
     }
 
-
     @Override
     public String toString()
     {
@@ -114,5 +111,4 @@ public class OrderedQueue
         }
         return sb.toString();
     }
-
 }

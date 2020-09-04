@@ -3,6 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 public class OrderedQueueTest
 {
+
     public static void main(String[] args)
     {
         OrderedQueue queue = new OrderedQueue();

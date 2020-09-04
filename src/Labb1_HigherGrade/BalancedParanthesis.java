@@ -3,6 +3,7 @@ import Labb1_task2.Stack;
 import java.util.Scanner;
 public class BalancedParanthesis
 {
+
     public static void main(String[] args)
     {
         Scanner strScan = new Scanner(System.in);

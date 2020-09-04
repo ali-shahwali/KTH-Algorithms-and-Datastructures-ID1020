@@ -32,7 +32,7 @@ public class CircularDoubleLinkedQTest
                     break;
 
                 case 3:
-                    DoublyLinkedIterator itr = queue.DoublyLinkedIterator();
+                    DoublyLinkedIterator<String> itr = queue.DoublyLinkedIterator();
                     int j = 1;
                     while(j != (1 | 2))
                     {
