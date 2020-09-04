@@ -31,7 +31,11 @@ public class CircLinkedList<Item> implements Iterable<Item>
         return size;
     }
 
-
+    /*
+       if the list is empty we declare last and make last.next point to last to create circularity
+       otherwise we make a new node with reference newFirst, this will be the first element in the list
+       we make it so it points to the previous first and so last.next points to the new first
+    */
     public void addFront(Item data)
     {
         if(isEmpty())
@@ -50,7 +54,11 @@ public class CircLinkedList<Item> implements Iterable<Item>
         }
         size++;
     }
-
+    /*
+       if the list is empty we declare last and create circularity
+       otherwise we simply copy last and declare a new last with inputted data as its .data
+       the new last will now point to the copy
+    */
     public void addBack(Item data)
     {
         if (isEmpty())
@@ -69,7 +77,9 @@ public class CircLinkedList<Item> implements Iterable<Item>
         }
         size++;
     }
+    /*
 
+    */
     public Item removeFront()
     {
         if(isEmpty())
