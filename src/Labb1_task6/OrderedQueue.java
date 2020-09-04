@@ -66,6 +66,8 @@ public class OrderedQueue
     {
         if(k < 1 || k - 1 > size)
             throw new NoSuchElementException("Index out of bounds");
+        else if(isEmpty())
+            throw new NoSuchElementException("Queue underflow");
         int data;
         if(size == 1)
         {
