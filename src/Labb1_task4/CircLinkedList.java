@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 
 public class CircLinkedList<Item> implements Iterable<Item>
 {
+    // cir
     private Node<Item> last;
     private int size;
 

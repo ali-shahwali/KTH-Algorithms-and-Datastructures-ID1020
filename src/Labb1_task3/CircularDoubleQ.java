@@ -106,7 +106,6 @@ public class CircularDoubleQ<Item> implements DoublyLinkedIterable<Item>
     }
 
     // simple stringbuilder that iterates through the queue and prints data of each element
-    @Override
     public String toString()
     {
         StringBuilder sb = new StringBuilder("(");
@@ -127,7 +126,6 @@ public class CircularDoubleQ<Item> implements DoublyLinkedIterable<Item>
         return sb.toString();
     }
     // because the queue is double linked we cant use java's iterator
-    @Override
     public DoublyLinkedIterator<Item> DoublyLinkedIterator()
     {
         return new DoubleLinkedIterator(last);
@@ -138,7 +136,7 @@ public class CircularDoubleQ<Item> implements DoublyLinkedIterable<Item>
         // the iterator consists of a node that iterates through the queue
         private Node<Item> current;
 
-        // constructor starts the iteration at the last element in the queue
+        // constructor, starts the iteration at the last element in the queue
         public DoubleLinkedIterator(Node<Item> last)
         {
             if(isEmpty())
@@ -148,6 +146,7 @@ public class CircularDoubleQ<Item> implements DoublyLinkedIterable<Item>
         }
 
         // technically these functions are of no use since the queue is circular
+        // but we implement them anyways as they are in the interface
         public boolean hasNext()
         {
             return current.next != null;
