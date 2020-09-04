@@ -5,16 +5,16 @@ import java.util.NoSuchElementException;
 
 public class CircLinkedList<Item> implements Iterable<Item>
 {
-    // cir
+    // circular list tracks last and size
     private Node<Item> last;
     private int size;
-
+    // node points to next and contains data
     private static class Node<Item>
     {
         private Node<Item> next;
         private Item data;
     }
-
+    // constructor
     public CircLinkedList()
     {
         last = null;
@@ -30,6 +30,7 @@ public class CircLinkedList<Item> implements Iterable<Item>
     {
         return size;
     }
+
 
     public void addFront(Item data)
     {
