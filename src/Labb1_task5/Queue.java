@@ -1,18 +1,18 @@
 package Labb1_task5;
 
 import java.util.NoSuchElementException;
-
+// generic queue that can insert and remove
 public class Queue<Item>
 {
     private Node<Item> first;
     private int size;
-
+    // node contains node pointing to next and generic data
     private static class Node<Item>
     {
         private Node<Item> next;
         private Item data;
     }
-
+    // constructor
     public Queue()
     {
         first = null;

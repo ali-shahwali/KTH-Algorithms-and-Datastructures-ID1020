@@ -91,7 +91,10 @@ public class CircLinkedList<Item> implements Iterable<Item>
         return data;
     }
     /*
-       
+       if there is only 1 element left we know its the last one and we set it to null
+       otherwise we create a node acting as first, we then create a node called current that iterates-
+       through the list until we reach the second to last element, we essentially "remove" last by-
+       making it equal to the second last one, we update its next pointer to first so it remains circular
     */
     public Item removeBack()
     {
@@ -115,6 +118,7 @@ public class CircLinkedList<Item> implements Iterable<Item>
         return data;
     }
 
+    //create a node current and iterate through the list and append each data to a stringbuilder
     @Override
     public String toString()
     {
@@ -131,6 +135,7 @@ public class CircLinkedList<Item> implements Iterable<Item>
         return sb.toString();
     }
 
+    // standard java iterator
     public Iterator<Item> iterator()
     {
         return new CircLinkedIterator(last);
@@ -138,8 +143,10 @@ public class CircLinkedList<Item> implements Iterable<Item>
 
     private class CircLinkedIterator implements Iterator<Item>
     {
+        // node current that iterates through the list
         private Node<Item> current;
 
+        // constructor
         public CircLinkedIterator(Node<Item> last)
         {
             if(isEmpty())
@@ -147,12 +154,12 @@ public class CircLinkedList<Item> implements Iterable<Item>
 
             current = last;
         }
-        // kommer aldrig användas eftersom det är en circular list
+        // will never be used as the list is circular
         public boolean hasNext()
         {
             return current.next != null;
         }
-
+        // simply move the current node to the next and return data
         public Item next()
         {
             if(!hasNext())
