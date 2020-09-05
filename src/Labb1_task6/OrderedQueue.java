@@ -26,11 +26,6 @@ public class OrderedQueue
         return first == null;
     }
 
-    public int getSize()
-    {
-        return size;
-    }
-
     public void add(int data)
     {
         if(isEmpty()) {

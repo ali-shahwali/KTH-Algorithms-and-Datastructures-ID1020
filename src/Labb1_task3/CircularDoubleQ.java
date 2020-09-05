@@ -32,10 +32,6 @@ public class CircularDoubleQ<Item> implements DoublyLinkedIterable<Item>
         return last == null;
     }
 
-    public int getSize()
-    {
-        return size;
-    }
     /*
        if the queue is empty then the added element will be first and last
        when we add a second element we want to separate first and last and also uphold the circular structure

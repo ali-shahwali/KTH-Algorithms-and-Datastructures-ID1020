@@ -46,7 +46,6 @@ public class CircularDoubleLinkedQTest
                     break;
 
                 default:
-                    System.out.println("size is: " + queue.getSize());
                     break;
             }
         }

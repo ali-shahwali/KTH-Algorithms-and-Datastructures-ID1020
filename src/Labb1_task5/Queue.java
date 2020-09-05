@@ -24,11 +24,6 @@ public class Queue<Item>
         return first == null;
     }
 
-    public int getSize()
-    {
-        return size;
-    }
-
     public void enqueue(Item data, int k)
     {
         if(k < 1 || k - 1> size)

@@ -26,11 +26,6 @@ public class CircLinkedList<Item> implements Iterable<Item>
         return last == null;
     }
 
-    public int getSize()
-    {
-        return size;
-    }
-
     /*
        if the list is empty we declare last and make last.next point to last to create circularity
        otherwise we make a new node with reference newFirst, this will be the first element in the list
@@ -78,7 +73,9 @@ public class CircLinkedList<Item> implements Iterable<Item>
         size++;
     }
     /*
-
+       since the list is circular we can simply make the last nodes next node point 2 nodes forward
+       this will effectively remove the first node
+       if there is only 1 element left we simply make last null
     */
     public Item removeFront()
     {
@@ -93,7 +90,9 @@ public class CircLinkedList<Item> implements Iterable<Item>
         size--;
         return data;
     }
-
+    /*
+       
+    */
     public Item removeBack()
     {
         if(isEmpty())

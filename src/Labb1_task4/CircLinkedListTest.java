@@ -56,7 +56,6 @@ public class CircLinkedListTest
                     break;
 
                 default:
-                    System.out.println(circList.getSize());
                     break;
             }
         }
