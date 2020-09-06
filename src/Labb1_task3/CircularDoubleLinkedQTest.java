@@ -12,8 +12,7 @@ public class CircularDoubleLinkedQTest
         int i = 0;
         while(i != 4)
         {
-            System.out.println("'1' to enqueue, '2' to dequeue, '3' to iterate through the queue, '4' to exit.\n" +
-                    "Anything else displays size.");
+            System.out.println("'1' to enqueue, '2' to dequeue, '3' to iterate through the queue, '4' to exit.");
             System.out.print("Enter now: ");
             i = intScan.nextInt();
             switch(i)

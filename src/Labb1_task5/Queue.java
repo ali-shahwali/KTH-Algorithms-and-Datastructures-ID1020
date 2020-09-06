@@ -1,17 +1,20 @@
 package Labb1_task5;
 
 import java.util.NoSuchElementException;
-// generic queue that can insert and remove
+// generic queue that can insert and remove elements at given index k
 public class Queue<Item>
 {
+    // our queue tracks the first node and its size
     private Node<Item> first;
     private int size;
+
     // node contains node pointing to next and generic data
     private static class Node<Item>
     {
         private Node<Item> next;
         private Item data;
     }
+
     // constructor
     public Queue()
     {
@@ -19,11 +22,19 @@ public class Queue<Item>
         size = 0;
     }
 
+    // checks if first is null, then we know the list is empty
     public boolean isEmpty()
     {
         return first == null;
     }
 
+    /*
+       if given index 'k' is out of bounds an exception is thrown
+       if empty we initialize first, if given index is 1 we have to reinitialize first
+       in any other case we create a node prev and a node current, current iterates to position k + 1
+       and prev iterates to position k, thereafter we insert the new element with the given data
+       we change prev.next node to point to the newly inserted node and change the newly inserted.next to current
+    */
     public void enqueue(Item data, int k)
     {
         if(k < 1 || k - 1> size)
@@ -60,7 +71,9 @@ public class Queue<Item>
         System.out.println(toString());
     }
 
+    /*
 
+    */
     public Item dequeue(int k)
     {
         if(k < 1 || k - 1 > size)
@@ -97,22 +110,19 @@ public class Queue<Item>
     @Override
     public String toString()
     {
-        StringBuilder sb = new StringBuilder("(");
-        Node<Item> current = first;
+        StringBuilder sb = new StringBuilder("[");
         if(size == 1)
-        {
-            sb.append(current.data + ")");
-        }
+            sb.append(first.data + "]");
         else
         {
+            Node<Item> current = first;
             while(current.next != null)
             {
-                sb.append(current.data + ", ");
+                sb.append(current.data + "], [");
                 current = current.next;
             }
-          sb.append(current.data + ")");
+          sb.append(current.data + "]");
         }
-
         return sb.toString();
     }
 }

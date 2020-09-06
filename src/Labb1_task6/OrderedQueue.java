@@ -92,19 +92,18 @@ public class OrderedQueue
     @Override
     public String toString()
     {
-        StringBuilder sb = new StringBuilder("(");
-
-        Node current = first;
+        StringBuilder sb = new StringBuilder("[");
         if(size == 1)
-            sb.append(current.data + ")");
+            sb.append(first.data + "]");
         else
         {
+            Node current = first;
             while (current.next != null)
             {
-                sb.append(current.data + ", ");
+                sb.append(current.data + "], [");
                 current = current.next;
             }
-            sb.append(current.data + ")");
+            sb.append(current.data + "]");
         }
         return sb.toString();
     }

@@ -19,6 +19,7 @@ public class CircularDoubleQ<Item> implements DoublyLinkedIterable<Item>
         private Node<Item> next;
         private Item data;
     }
+
     // constructor
     public CircularDoubleQ()
     {
@@ -26,6 +27,7 @@ public class CircularDoubleQ<Item> implements DoublyLinkedIterable<Item>
         last = null;
         size = 0;
     }
+
     // we know the queue is empty if last == null
     public boolean isEmpty()
     {
@@ -68,6 +70,7 @@ public class CircularDoubleQ<Item> implements DoublyLinkedIterable<Item>
         }
         size++;
     }
+
     /*
        first we check if the queue is empty, in that case we throw a exception
        if the queue has more than 2 element we perform a simple dequeue and update first
@@ -104,23 +107,24 @@ public class CircularDoubleQ<Item> implements DoublyLinkedIterable<Item>
     // simple stringbuilder that iterates through the queue and prints data of each element
     public String toString()
     {
-        StringBuilder sb = new StringBuilder("(");
+        StringBuilder sb = new StringBuilder("[");
         if(isEmpty())
             return "The queue is empty";
         if(size == 1)
-            sb.append(last.data + ")");
+            sb.append(last.data + "]");
         else
         {
             Node<Item> current = last;
             while(current != first)
             {
-                sb.append(current.data + ", ");
+                sb.append(current.data + "], [");
                 current = current.prev;
             }
-            sb.append(current.data + ")");
+            sb.append(current.data + "]");
         }
         return sb.toString();
     }
+
     // because the queue is double linked we cant use java's iterator
     public DoublyLinkedIterator<Item> DoublyLinkedIterator()
     {
@@ -151,7 +155,8 @@ public class CircularDoubleQ<Item> implements DoublyLinkedIterable<Item>
         {
             return current.prev != null;
         }
-        // we move current to the next element and return data in that element
+
+        // we iterate current to the next element and return data in that element
         public Item next()
         {
             current = current.next;
@@ -159,7 +164,7 @@ public class CircularDoubleQ<Item> implements DoublyLinkedIterable<Item>
             System.out.println(data);
             return data;
         }
-        // we move current to the previous element and return data in that element
+        // we iterate current to the previous element and return data in that element
         public Item prev()
         {
             current = current.prev;

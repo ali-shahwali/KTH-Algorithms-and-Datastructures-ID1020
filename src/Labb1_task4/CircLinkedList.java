@@ -8,12 +8,14 @@ public class CircLinkedList<Item> implements Iterable<Item>
     // circular list tracks last and size
     private Node<Item> last;
     private int size;
+
     // node points to next and contains data
     private static class Node<Item>
     {
         private Node<Item> next;
         private Item data;
     }
+
     // constructor
     public CircLinkedList()
     {
@@ -49,6 +51,7 @@ public class CircLinkedList<Item> implements Iterable<Item>
         }
         size++;
     }
+
     /*
        if the list is empty we declare last and create circularity
        otherwise we simply copy last and declare a new last with inputted data as its .data
@@ -72,6 +75,7 @@ public class CircLinkedList<Item> implements Iterable<Item>
         }
         size++;
     }
+
     /*
        since the list is circular we can simply make the last nodes next node point 2 nodes forward
        this will effectively remove the first node
@@ -90,6 +94,7 @@ public class CircLinkedList<Item> implements Iterable<Item>
         size--;
         return data;
     }
+
     /*
        if there is only 1 element left we know its the last one and we set it to null
        otherwise we create a node acting as first, we then create a node called current that iterates-
@@ -122,16 +127,16 @@ public class CircLinkedList<Item> implements Iterable<Item>
     @Override
     public String toString()
     {
-        StringBuilder sb = new StringBuilder("(");
+        StringBuilder sb = new StringBuilder("[");
         if(isEmpty())
             return "Queue is now empty";
         Node<Item> current = last.next;
         while(current != last)
         {
-            sb.append(current.data + ", ");
+            sb.append(current.data + "], [");
             current = current.next;
         }
-        sb.append(current.data + ")");
+        sb.append(current.data + "]");
         return sb.toString();
     }
 

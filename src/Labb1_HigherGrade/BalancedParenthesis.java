@@ -20,6 +20,7 @@ public class BalancedParenthesis
         else
             System.out.println("The parentheses are not balanced");
     }
+
     /*
        we use a stack and push in any opening parentheses or bracket in to the stack
        if we encounter a closing parentheses or bracket we pop the stack and check if they pair
@@ -42,6 +43,7 @@ public class BalancedParenthesis
         }
         return stack.isEmpty();
     }
+
     // simply converts a parenthesis or bracket to the opposite for comparison
     public static char opposite(char a)
     {
