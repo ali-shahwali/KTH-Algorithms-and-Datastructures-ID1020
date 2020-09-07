@@ -72,7 +72,12 @@ public class Queue<Item>
     }
 
     /*
-
+        first we check if the given index is out of bounds or if the queue is empty
+        if size is 1 we want to make first null which we will consider a special case
+        if the given index is 1 we are replacing first which also warrants a special case
+        for all other cases we create a node current that iterates to the node before the given index
+        we extract the data from current.next (the node being removed) and we change current.next pointer to point-
+        to the one after the removed one which effectively removes that given node
     */
     public Item dequeue(int k)
     {
@@ -107,6 +112,7 @@ public class Queue<Item>
         return data;
     }
 
+    // create node current that iterates through the queue and adds the data of each node to a stringbuilder
     @Override
     public String toString()
     {
