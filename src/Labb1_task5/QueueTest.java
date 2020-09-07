@@ -21,14 +21,15 @@ public class QueueTest
             switch(i)
             {
                 case 1:
-                    System.out.println("enter what u want to enqueue, then enter index");
+                    System.out.println("Enter what you want to enqueue, then enter index");
                     String str = strScan.nextLine();
+                    System.out.println("Enter index");
                     int j = intScan.nextInt();
                     queue.enqueue(str, j);
                     break;
 
                 case 2:
-                    System.out.println("enter what index u want to dequeue");
+                    System.out.println("Enter what index you want to dequeue");
                     j = intScan.nextInt();
                     System.out.println(queue.dequeue(j));
                     break;
