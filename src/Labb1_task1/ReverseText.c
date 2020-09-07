@@ -1,50 +1,41 @@
 #include <stdio.h>
-char* recursiveReverse(char* str, int len)
-{
-    if(len >= 0)
-    {
-        putchar(*str);
-        str--;
-        len--;
-        recursiveReverse(str,len);
-    }
-    char* text = "\nyou chose recursive";
-    return text;
-}
-
-void iterativeReverse(char* str, int len)
-{
-    int i = 0;
-    for(i; i < len+1; i++)
-    {
-        putchar(*str);
-        str--;
-    }
-}
-
-int main(void)
+#include <stdlib.h>
+void recursiveReverse()
 {
     char ch;
-    char* str = (char*) malloc(50* sizeof(char));
-    int length = 0;
-    printf("enter your characters ");
+    if((ch = getchar()) != '\n')
+    {
+        recursiveReverse();
+    }
+    putchar(ch);
+}
+
+void iterativeReverse()
+{
+    char* str = (char*)malloc(50*sizeof(char));
+    int len = 0;
+    char ch = 0;
     while(ch != '\n')
     {
         ch = getchar();
         *str = ch;
         str++;
-        length++;
+        len++;
     }
-    printf("type 1 for iterative, else recursive ");
-    int i;
-    scanf("%d", &i);
-    if(i == 1)
+    while(len >= 0)
     {
-        iterativeReverse(str, length);
-        printf("\nyou chose iterative \n");
+        putchar(*str);
+        str--;
+        len--;
     }
-    else
-       printf(recursiveReverse(str, length));
-    
+    printf("\n");
+}
+
+int main(void)
+{
+    printf("Enter your text to be reversed iteratively \n");
+    iterativeReverse();
+    printf("Enter your text to be reversed recursively \n");
+    recursiveReverse();
     return 0;
 }
