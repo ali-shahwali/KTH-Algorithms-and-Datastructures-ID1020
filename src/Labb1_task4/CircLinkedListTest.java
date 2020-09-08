@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.util.Iterator;
 public class CircLinkedListTest
 {
+    // allows the user to add a string at the front and back, as well as remove at the front and back
+    // of the list and also iterate through the list with a while loop and switch combo
     public static void main(String[] args)
     {
         CircLinkedList<String> circList = new CircLinkedList<String>();

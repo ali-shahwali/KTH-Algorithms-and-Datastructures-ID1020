@@ -5,6 +5,7 @@ import java.util.Stack;
 
 public class ReverseText
 {
+    // takes input from stdin and reverses it either iteratively with a stack or recursively through array logic
     public static void main(String[] args)
     {
         Scanner sys = new Scanner(System.in);

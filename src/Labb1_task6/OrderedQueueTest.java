@@ -3,7 +3,8 @@ import java.util.Random;
 import java.util.Scanner;
 public class OrderedQueueTest
 {
-
+    // allows the user to enqueue a random integer and remove a element at given index
+    // through a while loop with switch combo
     public static void main(String[] args)
     {
         OrderedQueue queue = new OrderedQueue();

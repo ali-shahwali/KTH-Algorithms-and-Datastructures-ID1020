@@ -3,7 +3,7 @@ import Labb1_task2.Stack;
 import java.util.Scanner;
 public class BalancedParenthesis
 {
-
+    // user inputs a string and of characters and the program checks if parentheses are balanced
     public static void main(String[] args)
     {
         Scanner strScan = new Scanner(System.in);

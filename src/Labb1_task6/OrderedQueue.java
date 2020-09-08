@@ -72,7 +72,7 @@ public class OrderedQueue
         System.out.println(toString());
     }
 
-    // we use the same remove method as the one implemented in task5
+    // we use the same remove method as the one implemented in task 5
     public int remove(int k)
     {
         if(k < 1 || k - 1 > size)

@@ -2,7 +2,7 @@ package Labb1_task4;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-
+// circular generic iterable linked list
 public class CircLinkedList<Item> implements Iterable<Item>
 {
     // circular list tracks last and size
@@ -123,7 +123,7 @@ public class CircLinkedList<Item> implements Iterable<Item>
         return data;
     }
 
-    //create a node current and iterate through the list and append each data to a stringbuilder
+    // create a node current and iterate through the list and append each data to a stringbuilder
     @Override
     public String toString()
     {
