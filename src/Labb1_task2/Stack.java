@@ -26,6 +26,10 @@ public class Stack
         return first == null;
     }
 
+    public int getSize()
+    {
+        return size;
+    }
     // create a copy of the current first, create a new first and its next pointer points to the old first
     public void push(char data)
     {

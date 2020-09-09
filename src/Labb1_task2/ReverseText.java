@@ -23,19 +23,19 @@ public class ReverseText
         System.out.println("Type 1 for iterative, else recursive");
         int i = sys.nextInt();
         if(i == 1)
-            System.out.println(iterativeReverse(stack));
+            iterativeReverse(stack);
         else
             recursiveReverse(arr, arr.length - 1);
 
     }
 
-    public static String iterativeReverse(Stack stack)
+    public static void iterativeReverse(Stack stack)
     {
         StringBuilder sb = new StringBuilder("");
         while(!stack.isEmpty())
             sb.append(stack.pop());
 
-        return sb.toString();
+        System.out.println(sb.toString());
     }
 
     public static void recursiveReverse(char[] arr, int size)
