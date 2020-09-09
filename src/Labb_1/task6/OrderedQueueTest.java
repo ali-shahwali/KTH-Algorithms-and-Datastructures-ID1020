@@ -12,9 +12,9 @@ public class OrderedQueueTest
         Random rand = new Random();
 
         int i = 0;
-        while(i != 3)
+        while(i != 4)
         {
-            System.out.println("'1' to add random integer to queue, '2' to remove, '3' to exit");
+            System.out.println("'1' to add random integer to queue, '2' to remove, '3' to add user input, '4' to exit");
             i = intScan.nextInt();
             switch (i)
             {
@@ -28,6 +28,12 @@ public class OrderedQueueTest
                     System.out.println("enter element index");
                     int j = intScan.nextInt();
                     System.out.println(queue.remove(j));
+                    break;
+
+                case 3:
+                    System.out.println("Enter: ");
+                    j = intScan.nextInt();
+                    queue.add(j);
                     break;
 
                 default:
