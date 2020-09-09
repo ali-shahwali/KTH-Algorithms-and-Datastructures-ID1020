@@ -34,11 +34,11 @@ public class BalancedParenthesis
         Stack stack = new Stack();
         for(int i = 0; i < arr.length; i++)
         {
-            if (arr[i] == ('(' | '[' | '{'))
+            if (arr[i] == '(' || arr[i] == '{' || arr[i] == '[')
                 stack.push(arr[i]);
-            else if(arr[i] == (')' | ']' | '}'))
+            else if(arr[i] == ')' || arr[i] == '}' || arr[i] == ']')
             {
-                if(stack.isEmpty() || stack.pop() != opposite(arr[i]))
+                if (stack.isEmpty() || stack.pop() != opposite(arr[i]))
                     return false;
             }
         }

@@ -23,7 +23,7 @@ public class Stack
     // if first == null, we know that the stack is empty
     public boolean isEmpty()
     {
-        return first == null;
+        return size == 0;
     }
 
     public int getSize()
