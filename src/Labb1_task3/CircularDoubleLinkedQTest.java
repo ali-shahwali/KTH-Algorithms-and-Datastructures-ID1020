@@ -6,7 +6,7 @@ public class CircularDoubleLinkedQTest
     // allows the user to enqueue, dequeue and iterate through the queue using a while loop and switch combo
     public static void main(String[] args)
     {
-        CircularDoubleQ<String> queue = new CircularDoubleQ<String>();
+        CircularDoubleLinkedQ<String> queue = new CircularDoubleLinkedQ<String>();
         Scanner intScan = new Scanner(System.in);
         Scanner strScan = new Scanner(System.in);
 

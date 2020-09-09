@@ -2,7 +2,7 @@ package Labb1_task3;
 
 import java.util.NoSuchElementException;
 // circular double linked generic iterable queue
-public class CircularDoubleQ<Item> implements DoublyLinkedIterable<Item>
+public class CircularDoubleLinkedQ<Item> implements DoublyLinkedIterable<Item>
 {
     // a queue consists of a first and a last node, we also track its size
     private Node<Item> first;
@@ -21,7 +21,7 @@ public class CircularDoubleQ<Item> implements DoublyLinkedIterable<Item>
     }
 
     // constructor
-    public CircularDoubleQ()
+    public CircularDoubleLinkedQ()
     {
         first = null;
         last = null;
