@@ -1,4 +1,4 @@
-package task_1;
+package Labb_2;
 
 public class InsertionSortTest {
 }
