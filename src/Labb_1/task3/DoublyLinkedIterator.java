@@ -1,4 +1,4 @@
-package Labb1_task3;
+package Labb_1.task3;
 /*
  our own iterator interface must also have the hasPrev() and prev() methods implemented
  due to the double link requirement from the assignment

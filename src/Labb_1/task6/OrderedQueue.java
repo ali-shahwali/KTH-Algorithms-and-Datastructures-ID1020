@@ -1,6 +1,4 @@
-package Labb1_task6;
-
-import Labb1_task5.Queue;
+package Labb_1.task6;
 
 import java.util.NoSuchElementException;
 

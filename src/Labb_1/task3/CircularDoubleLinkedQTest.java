@@ -1,4 +1,4 @@
-package Labb1_task3;
+package Labb_1.task3;
 
 import java.util.Scanner;
 public class CircularDoubleLinkedQTest

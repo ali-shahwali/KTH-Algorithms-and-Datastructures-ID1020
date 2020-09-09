@@ -1,4 +1,4 @@
-package Labb1_task4;
+package Labb_1.task4;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

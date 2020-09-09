@@ -1,4 +1,4 @@
-package Labb1_task6;
+package Labb_1.task6;
 import java.util.Random;
 import java.util.Scanner;
 public class OrderedQueueTest

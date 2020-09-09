@@ -1,4 +1,4 @@
-package Labb1_task3;
+package Labb_1.task3;
 
 import java.util.NoSuchElementException;
 // circular double linked generic iterable queue

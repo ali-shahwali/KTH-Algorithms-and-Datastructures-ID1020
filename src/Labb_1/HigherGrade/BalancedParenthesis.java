@@ -1,5 +1,6 @@
-package Labb1_HigherGrade;
-import Labb1_task2.Stack;
+package Labb_1.HigherGrade;
+import Labb_1.task2.Stack;
+
 import java.util.Scanner;
 public class BalancedParenthesis
 {

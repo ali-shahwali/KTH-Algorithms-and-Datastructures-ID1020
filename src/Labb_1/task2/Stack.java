@@ -1,4 +1,4 @@
-package Labb1_task2;
+package Labb_1.task2;
 
 public class Stack
 {

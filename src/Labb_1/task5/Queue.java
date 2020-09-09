@@ -1,4 +1,4 @@
-package Labb1_task5;
+package Labb_1.task5;
 
 import java.util.NoSuchElementException;
 // generic queue that can insert and remove elements at given index k

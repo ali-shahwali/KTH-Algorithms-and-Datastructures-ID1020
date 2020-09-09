@@ -1,5 +1,4 @@
-package Labb1_task4;
-import java.util.NoSuchElementException;
+package Labb_1.task4;
 import java.util.Scanner;
 import java.util.Iterator;
 public class CircLinkedListTest
