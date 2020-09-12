@@ -17,6 +17,8 @@ public class InsertionSortTest
             arr[i] = n;
             System.out.println(Arrays.toString(arr));
         }
+        System.out.println("Checking inversions");
+        InsertionSort.inversionCount(arr);
 
         System.out.println("Sorting...");
 
