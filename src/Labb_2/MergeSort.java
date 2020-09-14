@@ -11,12 +11,7 @@ public class MergeSort
             int divSize = arr.length/2;
 
             int[] leftArr = new int[divSize];
-            int[] rightArr;
-
-            if(arr.length % 2 == 0)
-                rightArr = new int[divSize];
-            else
-                rightArr = new int[divSize + 1];
+            int[] rightArr = new int[arr.length-divSize];
 
             for(int i = 0; i < divSize; i++)
             {
@@ -31,18 +26,37 @@ public class MergeSort
             leftArr = sort(leftArr);
             rightArr = sort(rightArr);
 
-            int[] sortedArr = merge(leftArr, rightArr);
 
-            return sortedArr;
+            return merge(leftArr,rightArr);
         }
     }
 
     private static int[] merge(int[] leftArr,int[] rightArr)
     {
         int[] mergeArr = new int[leftArr.length + rightArr.length];
+        int leftIndex = 0, rightIndex = 0, mergeIndex = 0;
 
-        int leftIndex, rightIndex, mergeIndex = 0;
+        while(less(leftIndex,leftArr.length) || less(rightIndex,rightArr.length))
+        {
+            if(less(leftIndex,leftArr.length) && less(rightIndex,rightArr.length))
+            {
+                if(less(leftArr[leftIndex],rightArr[rightIndex]))
+                    mergeArr[mergeIndex] = leftArr[leftIndex++];
+                else
+                    mergeArr[mergeIndex] = rightArr[rightIndex++];
 
+                mergeIndex++;
+            }
+            else if(less(leftIndex,leftArr.length))
+                mergeArr[mergeIndex++] = leftArr[leftIndex++];
+            else
+                mergeArr[mergeIndex++] = rightArr[rightIndex++];
+        }
         return mergeArr;
+    }
+
+    private static boolean less(int i, int j)
+    {
+        return i < j;
     }
 }
