@@ -1,4 +1,4 @@
-package Labb_2;
+package Labb_2.task_1_2_3;
 
 import java.util.Arrays;
 
@@ -30,17 +30,17 @@ public class InsertionSort
     */
     public static void sort(int[] arr)
     {
-        int swaps = 0;
+        //int swaps = 0;
         for(int i = 1; i < arr.length;i++)
         {
             for(int j = i; j > 0 && less(arr[j],arr[j-1]);j--)
             {
                 exchange(arr, j, j-1);
-                swaps++;
+                //swaps++;
             }
-            System.out.println(Arrays.toString(arr));
+            //System.out.println(Arrays.toString(arr));
         }
-        System.out.println("number of swaps "+swaps);
+        //System.out.println("number of swaps "+swaps);
     }
 
     // swaps value at index i in array with value at index j in array

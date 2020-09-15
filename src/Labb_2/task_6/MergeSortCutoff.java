@@ -1,11 +1,13 @@
-package Labb_2;
-
-public class MergeSort
+package Labb_2.task_6;
+import Labb_2.task_1_2_3.InsertionSort;
+public class MergeSortCutoff
 {
-    public static int[] sort(int[] arr)
+    public static int[] sort(int[] arr, int cutoff)
     {
-        if(arr.length <= 1)
+        if(arr.length <= cutoff) {
+            InsertionSort.sort(arr);
             return arr;
+        }
         else
         {
             int divSize = arr.length/2;
@@ -23,8 +25,8 @@ public class MergeSort
                 rightArr[j] = arr[divSize + j];
             }
 
-            leftArr = sort(leftArr);
-            rightArr = sort(rightArr);
+            leftArr = sort(leftArr,cutoff);
+            rightArr = sort(rightArr,cutoff);
 
 
             return merge(leftArr,rightArr);

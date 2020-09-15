@@ -1,4 +1,5 @@
-package Labb_2;
+package Labb_2.task_1_2_3;
+
 import java.util.Arrays;
 import java.util.Scanner;
 public class InsertionSortTest
