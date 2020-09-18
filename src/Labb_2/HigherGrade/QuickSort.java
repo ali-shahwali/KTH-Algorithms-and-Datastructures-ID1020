@@ -8,8 +8,8 @@ public class QuickSort
             return;
 
         int j = partition(arr,lo,hi);
-        sort(arr,lo,j - 1);
-        sort(arr,j+1,hi);
+        sort(arr,lo,--j);
+        sort(arr,++j,hi);
     }
 
     public static void sortMedian3(int[] arr, int lo, int hi)
@@ -23,26 +23,28 @@ public class QuickSort
         exchange(arr,median,lo);
 
         int j = partition(arr,lo,hi);
-        sort(arr,lo,j - 1);
-        sort(arr,j+1,hi);
+        sort(arr,lo,--j);
+        sort(arr,++j,hi);
     }
 
     private static int partition(int[] arr, int lo, int hi)
     {
-        int i = lo;
-        int j = hi + 1;
+        int i = lo + 1;
+        int j = hi;
         int v = arr[lo];
         while(true)
         {
-            while(less(arr[++i],v))
+            while(less(arr[i],v))
             {
                 if(i == hi)
                     break;
+                i++;
             }
-            while(less(v,arr[--j]))
+            while(less(v,arr[j]))
             {
                 if(j == lo)
                     break;
+                j--;
             }
             if(j <= i)
                 break;
