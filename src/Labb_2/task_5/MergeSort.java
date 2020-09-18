@@ -2,57 +2,49 @@ package Labb_2.task_5;
 
 public class MergeSort
 {
-    public static int[] sort(int[] arr)
+    public static void sort(int[] arr, int[] aux, int lo, int hi)
     {
-        if(arr.length <= 1)
-            return arr;
-        else
-        {
-            int divSize = arr.length/2;
+        if(hi <= lo)
+            return;
 
-            int[] leftArr = new int[divSize];
-            int[] rightArr = new int[arr.length-divSize];
+        int mid = lo + (hi - lo) / 2;
+        sort(arr, aux, lo, mid);
+        sort(arr, aux, mid + 1, hi);
+        merge(arr, aux, lo, mid, hi);
 
-            for(int i = 0; i < divSize; i++)
-            {
-                leftArr[i] = arr[i];
-            }
-
-            for(int j = 0; j < rightArr.length; j++)
-            {
-                rightArr[j] = arr[divSize + j];
-            }
-
-            leftArr = sort(leftArr);
-            rightArr = sort(rightArr);
-
-
-            return merge(leftArr,rightArr);
-        }
     }
 
-    private static int[] merge(int[] leftArr,int[] rightArr)
+    private static void merge(int[] arr, int[] aux, int lo, int mid, int hi)
     {
-        int[] mergeArr = new int[leftArr.length + rightArr.length];
-        int leftIndex = 0, rightIndex = 0, mergeIndex = 0;
-
-        while(less(leftIndex,leftArr.length) || less(rightIndex,rightArr.length))
+        for (int k = lo; k <= hi; k++)
         {
-            if(less(leftIndex,leftArr.length) && less(rightIndex,rightArr.length))
-            {
-                if(less(leftArr[leftIndex],rightArr[rightIndex]))
-                    mergeArr[mergeIndex] = leftArr[leftIndex++];
-                else
-                    mergeArr[mergeIndex] = rightArr[rightIndex++];
-
-                mergeIndex++;
-            }
-            else if(less(leftIndex,leftArr.length))
-                mergeArr[mergeIndex++] = leftArr[leftIndex++];
-            else
-                mergeArr[mergeIndex++] = rightArr[rightIndex++];
+            aux[k] = arr[k];
         }
-        return mergeArr;
+
+        int i = lo, j = mid+1;
+        for (int k = lo; k <= hi; k++)
+        {
+            if(i > mid)
+            {
+                arr[k] = aux[j];
+                j++;
+            }
+            else if(j > hi)
+            {
+                arr[k] = aux[i];
+                i++;
+            }
+            else if(less(aux[j], aux[i]))
+            {
+                arr[k] = aux[j];
+                j++;
+            }
+            else
+            {
+                arr[k] = aux[i];
+                i++;
+            }
+        }
     }
 
     private static boolean less(int i, int j)

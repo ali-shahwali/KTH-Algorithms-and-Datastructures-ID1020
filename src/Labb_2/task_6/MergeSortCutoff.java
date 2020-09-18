@@ -1,62 +1,72 @@
 package Labb_2.task_6;
-import Labb_2.task_1_2_3.InsertionSort;
+
 public class MergeSortCutoff
 {
-    public static int[] sort(int[] arr, int cutoff)
+    public static void sort(int[] arr, int[] aux, int lo, int hi, int cutoff)
     {
-        if(arr.length <= cutoff) {
-            InsertionSort.sort(arr);
-            return arr;
-        }
-        else
+        if(hi <= lo + cutoff)
         {
-            int divSize = arr.length/2;
-
-            int[] leftArr = new int[divSize];
-            int[] rightArr = new int[arr.length-divSize];
-
-            for(int i = 0; i < divSize; i++)
-            {
-                leftArr[i] = arr[i];
-            }
-
-            for(int j = 0; j < rightArr.length; j++)
-            {
-                rightArr[j] = arr[divSize + j];
-            }
-
-            leftArr = sort(leftArr,cutoff);
-            rightArr = sort(rightArr,cutoff);
-
-
-            return merge(leftArr,rightArr);
+            insertionSort(arr,lo,hi);
+            return;
         }
+
+        int mid = lo + (hi - lo) / 2;
+        sort(arr, aux, lo, mid, cutoff);
+        sort(arr, aux, mid + 1, hi, cutoff);
+        merge(arr, aux, lo, mid, hi);
     }
 
-    private static int[] merge(int[] leftArr,int[] rightArr)
+    private static void merge(int[] arr, int[] aux, int lo, int mid, int hi)
     {
-        int[] mergeArr = new int[leftArr.length + rightArr.length];
-        int leftIndex = 0, rightIndex = 0, mergeIndex = 0;
-
-        while(less(leftIndex,leftArr.length) || less(rightIndex,rightArr.length))
+        for (int k = lo; k <= hi; k++)
         {
-            if(less(leftIndex,leftArr.length) && less(rightIndex,rightArr.length))
-            {
-                if(less(leftArr[leftIndex],rightArr[rightIndex]))
-                    mergeArr[mergeIndex] = leftArr[leftIndex++];
-                else
-                    mergeArr[mergeIndex] = rightArr[rightIndex++];
+            aux[k] = arr[k];
+        }
 
-                mergeIndex++;
+        int i = lo, j = mid+1;
+        for (int k = lo; k <= hi; k++)
+        {
+            if(i > mid)
+            {
+                arr[k] = aux[j];
+                j++;
             }
-            else if(less(leftIndex,leftArr.length))
-                mergeArr[mergeIndex++] = leftArr[leftIndex++];
+            else if(j > hi)
+            {
+                arr[k] = aux[i];
+                i++;
+            }
+            else if(less(aux[j], aux[i]))
+            {
+                arr[k] = aux[j];
+                j++;
+            }
             else
-                mergeArr[mergeIndex++] = rightArr[rightIndex++];
+            {
+                arr[k] = aux[i];
+                i++;
+            }
         }
-        return mergeArr;
+    }
+    private static void insertionSort(int[] arr, int lo, int hi)
+    {
+
+        for(int i = lo; i <= hi; i++)
+        {
+            for(int j = i; j > lo && less(arr[j],arr[j-1]); j--)
+            {
+                exchange(arr,j,j-1);
+            }
+        }
     }
 
+    private static void exchange(int[] arr, int i, int j)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+
+    }
     private static boolean less(int i, int j)
     {
         return i < j;
