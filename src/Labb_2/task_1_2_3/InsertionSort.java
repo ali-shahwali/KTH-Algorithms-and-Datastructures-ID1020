@@ -2,6 +2,13 @@ package Labb_2.task_1_2_3;
 
 import java.util.Arrays;
 
+/*
+    Simple insertion sort algorithm, we start at array index 1 and continuously
+    compare with the element to the left until we reach index 0, then we increment
+    to index 2 and repeat until we reach the final element.
+    We do this with a nested for-loop giving us the worst case time complexity O(n²).
+    We print the array after each inner loop using Arrays.toString()
+*/
 public class InsertionSort
 {
     public static void inversionCount(int[] arr)
@@ -30,17 +37,17 @@ public class InsertionSort
     */
     public static void sort(int[] arr)
     {
-        //int swaps = 0;
+        int swaps = 0;
         for(int i = 1; i < arr.length;i++)
         {
             for(int j = i; j > 0 && less(arr[j],arr[j-1]);j--)
             {
                 exchange(arr, j, j-1);
-                //swaps++;
+                swaps++;
             }
-            //System.out.println(Arrays.toString(arr));
+            System.out.println(Arrays.toString(arr));
         }
-        //System.out.println("number of swaps "+swaps);
+        System.out.println("number of swaps "+swaps);
     }
 
     // swaps value at index i in array with value at index j in array

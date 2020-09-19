@@ -20,13 +20,13 @@ public class QuickSortTest
 
         System.out.println("Sorting without median 3");
         long startTime = System.nanoTime();
-        QuickSort.sort(arr,0,n-1);
+        QuickSort.sort(arr,0,arr.length-1);
         long finishTime = System.nanoTime();
         System.out.println("Time elapsed: " + (double)(finishTime - startTime)/1000000000 + " seconds");
 
         System.out.println("Sorting with median 3");
         startTime = System.nanoTime();
-        QuickSort.sortMedian3(arrCopy,0,n-1);
+        QuickSort.sortMedian3(arrCopy,0, arrCopy.length-1);
         finishTime = System.nanoTime();
         System.out.println("Time elapsed: " + (double)(finishTime-startTime)/1000000000 + " seconds");
     }
