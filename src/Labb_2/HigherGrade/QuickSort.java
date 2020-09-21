@@ -51,8 +51,8 @@ public class QuickSort
         we have a variable 'i' starting at lo and a variable 'j' starting at hi, we increment 'i' until we find
         an element larger than the element we are partitioning, we decrement 'j' until we find a smaller element.
         The purpose being to find what position the partitioning entry should be placed in. if 'j' never passes 'i' we
-        swap them, then we swap 'j' and the element we are partitioning. return index 'j' for further partitioning.
-
+        swap them and continue the loop, if 'j' passes 'i' then we have found every smaller and larger element and
+        we can swap the partitioning entry with j and return j's position for further partitioning.
     */
     private static int partition(int[] arr, int lo, int hi)
     {
