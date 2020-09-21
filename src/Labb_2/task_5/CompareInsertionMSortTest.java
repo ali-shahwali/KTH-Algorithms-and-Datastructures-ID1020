@@ -9,7 +9,7 @@ import java.util.Random;
     we then sort one array with merge sort and one array with insertion sort
     we compare the time it takes to sort both arrays with System.nanoTime() and later convert it to seconds
 */
-public class CompareSortTest
+public class CompareInsertionMSortTest
 {
     public static void main(String[] args)
     {
