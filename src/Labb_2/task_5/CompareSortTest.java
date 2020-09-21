@@ -1,7 +1,14 @@
 package Labb_2.task_5;
-import Labb_2.task_1_2_3.InsertionSort;
+import Labb_2.task_1.InsertionSort;
 import java.util.Scanner;
 import java.util.Random;
+
+/*
+    the test program fills two arrays with size n defined by the user with exactly identical values
+    the values are between 0 and n and are generated using javas own psuedorandom number generator
+    we then sort one array with merge sort and one array with insertion sort
+    we compare the time it takes to sort both arrays with System.nanoTime() and later convert it to seconds
+*/
 public class CompareSortTest
 {
     public static void main(String[] args)

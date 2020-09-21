@@ -1,16 +1,19 @@
-package Labb_2.task_1_2_3;
+package Labb_2.task_3;
 
 import java.util.Arrays;
 
 /*
-    Simple insertion sort algorithm, we start at array index 1 and continuously
-    compare with the element to the left until we reach index 0, then we increment
-    to index 2 and repeat until we reach the final element.
-    We do this with a nested for-loop giving us the worst case time complexity O(n²).
-    We print the array after each inner loop using Arrays.toString()
+README
+    An inversion is every pair of elements which in the context of the array is out-of-order
+    For example the array containing [3,2,4,1] has inversions (3-2) (3-1) (2-4) and (4-1).
+    To find every inversion we use a similar algorithm as insertion sort, we start at index 0
+    and using a nested for-loop we check for every inversion by iterating through the array.
+    We concatenate each inversion to a string and return said string. In the worst case
+    we also have O(n²) time complexity.
 */
-public class InsertionSort
+public class InsertionSortInversion
 {
+    // prints every inversion in a given integer array
     public static void inversionCount(int[] arr)
     {
         StringBuilder sb = new StringBuilder("");
@@ -37,17 +40,13 @@ public class InsertionSort
     */
     public static void sort(int[] arr)
     {
-        int swaps = 0;
         for(int i = 1; i < arr.length;i++)
         {
             for(int j = i; j > 0 && less(arr[j],arr[j-1]);j--)
             {
                 exchange(arr, j, j-1);
-                swaps++;
             }
-            System.out.println(Arrays.toString(arr));
         }
-        System.out.println("number of swaps "+swaps);
     }
 
     // swaps value at index i in array with value at index j in array
@@ -64,4 +63,3 @@ public class InsertionSort
         return i < j;
     }
 }
-

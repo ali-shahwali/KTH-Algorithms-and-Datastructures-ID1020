@@ -1,6 +1,12 @@
 package Labb_2.HigherGrade;
 import java.util.*;
-public class QuickSortTest
+/*
+README
+    Sorts an array with given input n in sizes with entries ranging  from 0-n first without median 3 partitioning
+    quicksort and then with median 3 partitioning quicksort, tracks time with System.nanoTime() which we convert to
+    seconds.
+*/
+public class QSortMedian3Test
 {
     public static void main(String[] args)
     {
