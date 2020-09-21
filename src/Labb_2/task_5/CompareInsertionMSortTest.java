@@ -22,9 +22,10 @@ public class CompareInsertionMSortTest
 
         int[] arr = new int[n];
         int[] arrCopy = new int[n]; // used to sort with insertionsort
+        int randomInt;
         for(int i = 0; i < arr.length; i++)
         {
-            int randomInt = rand.nextInt(n);
+            randomInt = rand.nextInt(n);
             arr[i] = randomInt;
             arrCopy[i] = randomInt;
         }

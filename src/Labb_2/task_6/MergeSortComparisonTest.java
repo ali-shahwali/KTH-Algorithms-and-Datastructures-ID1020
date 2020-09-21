@@ -1,6 +1,11 @@
 package Labb_2.task_6;
 import Labb_2.task_5.MergeSort;
 import java.util.*;
+/*
+    Fills 6 arrays with size n with identically random elements ranging from 0-n.
+    Sorts one with cutoff 5, one with 10, one with 15, one with 20, one with 30 and one without cutoff.
+    Sorting times are compared using System.nanoTime() and later converted to seconds.
+*/
 public class MergeSortComparisonTest
 {
     public static void main(String[] args)

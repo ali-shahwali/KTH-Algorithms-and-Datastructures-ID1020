@@ -32,11 +32,12 @@ public class QuickSort
     */
     public static void sortMedian3(int[] arr, int lo, int hi)
     {
-        // n is the middle of the current subarray
+        // n is used to find the middle of the current subarray
         int n = (hi - lo + 1);
         if(hi <= lo)
             return;
 
+        // finds the median of the lowest, middle and highest entry
         int[] medianArr = {arr[lo],arr[lo + n/2],arr[hi]};
         int medianIndex = median3(medianArr,lo,lo + n/2,hi);
         exchange(arr,medianIndex,lo);
@@ -45,6 +46,7 @@ public class QuickSort
         sort(arr,lo,j-1);
         sort(arr,j+1,hi);
     }
+
     /*
         we have a variable 'i' starting at lo and a variable 'j' starting at hi, we increment 'i' until we find
         an element larger than the element we are partitioning, we decrement 'j' until we find a smaller element.

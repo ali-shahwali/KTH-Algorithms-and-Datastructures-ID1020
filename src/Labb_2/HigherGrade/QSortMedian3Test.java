@@ -17,9 +17,10 @@ public class QSortMedian3Test
 
         int[] arr = new int[n];
         int[] arrCopy = new int[n];
+        int randInt;
         for(int i = 0; i < n; i++)
         {
-            int randInt = rand.nextInt(n);
+            randInt = rand.nextInt(n);
             arr[i] = randInt;
             arrCopy[i] = randInt;
         }

@@ -19,9 +19,10 @@ public class DescendingInsertionSortTest
         int n = intScan.nextInt();
         System.out.println();
         int[] arr = new int[n];
+        int randInt;
         for(int i = 0; i < n; i++)
         {
-            int randInt = rand.nextInt(n);
+            randInt = rand.nextInt(n);
             arr[i] = randInt;
         }
 
