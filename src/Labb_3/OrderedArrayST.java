@@ -1,7 +1,5 @@
 package Labb_3;
 
-import Labb_1.task3.CircularDoubleLinkedQ;
-
 import java.util.Iterator;
 
 public class OrderedArrayST<Key extends Comparable<Key>, Value> implements Iterable<Key>
