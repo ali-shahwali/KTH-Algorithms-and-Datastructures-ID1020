@@ -1,11 +1,19 @@
 package Labb_3;
 
-public class OrderedArrayST<Key extends Comparable<Key>, Value>
+import Labb_1.task3.CircularDoubleLinkedQ;
+
+import java.util.Iterator;
+
+public class OrderedArrayST<Key extends Comparable<Key>, Value> implements Iterable<Key, Value>
 {
-    private Key[] keys;
+    public Key[] keys;
     private Value[] values;
     private int n = 0;
-
+    private static final int init_size = 2;
+    public OrderedArrayST()
+    {
+        this(init_size);
+    }
     public OrderedArrayST(int size)
     {
         keys = (Key[]) new Comparable[size];
@@ -19,9 +27,6 @@ public class OrderedArrayST<Key extends Comparable<Key>, Value>
 
     public void put(Key key, Value value)
     {
-        if(n == keys.length)
-            throw new OutOfMemoryError("Exceeded capacity");
-
         if(value == null)
         {
             delete(key);
@@ -34,7 +39,8 @@ public class OrderedArrayST<Key extends Comparable<Key>, Value>
             values[index] = value;
             return;
         }
-
+        if(n == keys.length)
+            resize(2* keys.length);
         for (int j = n; j > index; j--)
         {
             keys[j] = keys[j-1];
@@ -79,4 +85,56 @@ public class OrderedArrayST<Key extends Comparable<Key>, Value>
         return lo;
     }
 
+    private void resize(int capacity)
+    {
+        assert capacity >= n;
+        Key[]   tempk = (Key[])   new Comparable[capacity];
+        Value[] tempv = (Value[]) new Object[capacity];
+        for (int i = 0; i < n; i++) {
+            tempk[i] = keys[i];
+            tempv[i] = values[i];
+        }
+        values = tempv;
+        keys = tempk;
+    }
+
+    public boolean contains(Key key)
+    {
+        return get(key) != null;
+    }
+
+    public Key max()
+    {
+        return keys[n-1];
+    }
+
+    public Key min()
+    {
+        return keys[0];
+    }
+
+    public Iterator<Key> iterator()
+    {
+        return new keyIterator(min());
+    }
+
+    private class keyIterator implements Iterator<Key>
+    {
+        Key currentKey;
+
+        private keyIterator(Key lo)
+        {
+            currentKey = lo;
+        }
+
+
+        public boolean hasNext() {
+            return currentKey != null;
+        }
+
+
+        public Key next() {
+            return null;
+        }
+    }
 }
