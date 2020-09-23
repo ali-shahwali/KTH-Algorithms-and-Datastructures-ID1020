@@ -4,7 +4,7 @@ public class OrderedArrayST<Key extends Comparable<Key>, Value>
 {
     private Key[] keys;
     private Value[] values;
-    private int n;
+    private int n = 0;
 
     public OrderedArrayST(int size)
     {
@@ -35,7 +35,8 @@ public class OrderedArrayST<Key extends Comparable<Key>, Value>
             return;
         }
 
-        for (int j = n; j > index; j--)  {
+        for (int j = n; j > index; j--)
+        {
             keys[j] = keys[j-1];
             values[j] = values[j-1];
         }

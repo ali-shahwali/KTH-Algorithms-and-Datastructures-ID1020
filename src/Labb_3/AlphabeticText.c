@@ -10,19 +10,17 @@ int main(void)
     wfp = fopen("Task1dst.txt", "w");
 
     if(fp == NULL || wfp == NULL) 
-      return(-1);
+        return(-1);
 
     char ch;
-    while(1)
+    while((ch = fgetc(fp)) != EOF)
     {
-        ch = fgetc(fp);
-        if(ch != EOF && (isalpha(ch) != 0 || ch == '\n'))
+        if((isalpha(ch) != 0 || ch == '\n'))
             fputc(ch,wfp);
-        else if(ch != EOF && isalpha(ch) == 0)
-            fputc(32,wfp);
         else
-            break;
+            fputc(32,wfp);
     }
+
     fclose(fp);
     fclose(wfp);
     return 0;
