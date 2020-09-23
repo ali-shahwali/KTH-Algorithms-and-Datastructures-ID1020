@@ -4,9 +4,9 @@ import Labb_1.task3.CircularDoubleLinkedQ;
 
 import java.util.Iterator;
 
-public class OrderedArrayST<Key extends Comparable<Key>, Value> implements Iterable<Key, Value>
+public class OrderedArrayST<Key extends Comparable<Key>, Value> implements Iterable<Key>
 {
-    public Key[] keys;
+    private Key[] keys;
     private Value[] values;
     private int n = 0;
     private static final int init_size = 2;
@@ -78,9 +78,10 @@ public class OrderedArrayST<Key extends Comparable<Key>, Value> implements Itera
             int compare = key.compareTo(keys[mid]);
             if(compare < 0)
                 hi = mid - 1;
-            if(compare > 0)
+            else if(compare > 0)
                 lo = mid + 1;
-            else return mid;
+            else
+                return mid;
         }
         return lo;
     }
@@ -115,26 +116,36 @@ public class OrderedArrayST<Key extends Comparable<Key>, Value> implements Itera
 
     public Iterator<Key> iterator()
     {
-        return new keyIterator(min());
+        return new keyIterator(keys[0]);
     }
 
     private class keyIterator implements Iterator<Key>
     {
         Key currentKey;
-
+        int startPos;
         private keyIterator(Key lo)
         {
+            startPos = 0;
             currentKey = lo;
         }
 
 
-        public boolean hasNext() {
-            return currentKey != null;
+        public boolean hasNext()
+        {
+            return keys[startPos + 1] != null;
         }
 
 
-        public Key next() {
-            return null;
+        public Key next()
+        {
+            if(hasNext())
+            {
+                Key key = currentKey;
+                currentKey = keys[++startPos];
+                return key;
+            }
+            else
+                return currentKey;
         }
     }
 }

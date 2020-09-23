@@ -1,5 +1,6 @@
 package Labb_3;
 import java.io.FileNotFoundException;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.io.File;
 public class FrequencyCounter
@@ -29,8 +30,21 @@ public class FrequencyCounter
             iterations++;
         }
 
+        Iterator itr = st.iterator();
 
+        String maxKey = st.min();
+        int maxValue = st.get(maxKey);
+        String current;
+        for(int i = 0; i < n - 1; i++)
+        {
+            current = (String) itr.next();
+            if(maxValue < st.get(current))
+            {
+                maxKey = current;
+                maxValue = st.get(current);
+            }
+        }
 
-
+        System.out.println(maxKey + " " + maxValue);
     }
 }
