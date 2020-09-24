@@ -1,4 +1,4 @@
-package Labb_3;
+package Labb_3.Task2;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;

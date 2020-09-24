@@ -1,4 +1,4 @@
-package Labb_3;
+package Labb_3.Task2;
 
 public class BinarySearchTree<Key extends Comparable<Key>, Value>
 {
