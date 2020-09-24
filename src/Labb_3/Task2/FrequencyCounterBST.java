@@ -14,7 +14,7 @@ public class FrequencyCounterBST
 
         BinarySearchTree<String, Integer> bst = new BinarySearchTree<String, Integer>();
         int iterations = 0, distinct = 0, minLen = 3;
-        String key, mostFreq = "O";
+        String key, mostFreq = "H";
         bst.put(mostFreq,0);
         long startTime = System.nanoTime();
         while(reader.hasNextLine() && iterations < n)

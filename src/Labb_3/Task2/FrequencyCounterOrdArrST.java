@@ -16,7 +16,6 @@ public class FrequencyCounterOrdArrST
 
         OrderedArrayST<String, Integer> st = new OrderedArrayST<String, Integer>(n);
         int iterations = 0, distinct = 0;
-
         String key, mostFreq = "";
         st.put(mostFreq,0);
         long startTime = System.nanoTime();
