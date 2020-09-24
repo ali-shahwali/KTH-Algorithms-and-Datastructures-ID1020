@@ -1,7 +1,5 @@
 package Labb_3;
 
-import javax.swing.*;
-
 public class BinarySearchTree<Key extends Comparable<Key>, Value>
 {
     private Node root;
@@ -21,12 +19,25 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value>
         }
     }
 
+    public BinarySearchTree()
+    {
+
+    }
+
+    public boolean contains(Key key)
+    {
+        return get(key) != null;
+    }
+
     public Value get(Key key)
     {
         return get(root,key);
     }
     private Value get(Node node, Key key)
     {
+        if (node == null)
+            return null;
+
         int compare = key.compareTo(node.key);
         if(compare < 0)
             return get(node.left,key);
