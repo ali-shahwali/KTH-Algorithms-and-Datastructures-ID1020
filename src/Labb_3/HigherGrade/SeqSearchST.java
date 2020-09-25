@@ -30,9 +30,9 @@ public class SeqSearchST<Key, Value>
     }
     public void put(Key key, Value value)
     {
-        for (Node node = first; node != null; node = node.next)
+        for(Node node = first; node != null; node = node.next)
         {
-            if (key.equals(node.key))
+            if(key.equals(node.key))
             {
                 node.value = value;
                 return;
@@ -51,7 +51,7 @@ public class SeqSearchST<Key, Value>
     {
         for(Node node = first; node != null; node = node.next)
         {
-            if (key.equals(node.key))
+            if(key.equals(node.key))
                 return node.value;
         }
         return null;
@@ -60,7 +60,7 @@ public class SeqSearchST<Key, Value>
     public Iterable<Key> keys()
     {
         Queue<Key> queue = new Queue<Key>();
-        for (Node x = first; x != null; x = x.next)
+        for(Node x = first; x != null; x = x.next)
             queue.enqueue(x.key);
 
         return (Iterable<Key>) queue;

@@ -1,7 +1,4 @@
 package Labb_3.HigherGrade;
-
-import java.util.Iterator;
-
 public class Queue<Item>
 {
     private Node<Item> first;    // beginning of queue

@@ -29,9 +29,9 @@ public class SeparateChainingHash<Key, Value>
     private void resize(int chains)
     {
         SeparateChainingHash<Key, Value> temp = new SeparateChainingHash<Key, Value>(chains);
-        for (int i = 0; i < m; i++)
+        for(int i = 0; i < m; i++)
         {
-            for (Key key : st[i].keys())
+            for(Key key : st[i].keys())
             {
                 temp.put(key, st[i].get(key));
             }
@@ -54,7 +54,7 @@ public class SeparateChainingHash<Key, Value>
             resize(2*m);
 
         int i = hash(key);
-        if (!st[i].contains(key))
+        if(!st[i].contains(key))
             n++;
         st[i].put(key, val);
     }
@@ -62,5 +62,14 @@ public class SeparateChainingHash<Key, Value>
     public boolean contains(Key key)
     {
         return get(key) != null;
+    }
+
+    public Iterable<Key> keys() {
+        Queue<Key> queue = new Queue<Key>();
+        for (int i = 0; i < m; i++) {
+            for (Key key : st[i].keys())
+                queue.enqueue(key);
+        }
+        return (Iterable<Key>) queue;
     }
 }

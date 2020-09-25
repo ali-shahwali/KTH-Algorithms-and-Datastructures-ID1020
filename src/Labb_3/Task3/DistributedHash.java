@@ -11,17 +11,18 @@ public class DistributedHash
         Scanner wordReader = new Scanner(theText);
         Scanner input = new Scanner(System.in);
         System.out.println("How many words do you want to read? Enter now: ");
-        int n = input.nextInt();
 
         BinarySearchTree<Integer, String> bst = new BinarySearchTree<Integer, String>();
 
-        int minlen = 3, iterations = 0;
+        int minlen = 3;
         int key;
         String word;
-        while(wordReader.hasNextLine() && iterations < n)
+        while(wordReader.hasNextLine())
         {
             word = wordReader.next();
             key = word.hashCode();
+            if(word.charAt(word.length()-1) == '.')
+                word = word.substring(0,word.length()-1);
             if(word.length() < minlen)
                 continue;
             if(!bst.contains(key))
@@ -36,7 +37,6 @@ public class DistributedHash
                 System.out.println(bst.get(key) + " " + key);
                 System.out.println();
             }
-            iterations++;
         }
     }
 }

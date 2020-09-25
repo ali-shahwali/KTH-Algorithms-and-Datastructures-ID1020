@@ -1,10 +1,10 @@
 package Labb_3.Task4;
 import java.util.ArrayList;
 
-public class ListBST<Key extends Comparable<Key>>
+public class ListBST<Key extends Comparable<Key>, Value>
 {
     private Key[] keys;
-    private ArrayList[] values;
+    private ArrayList<Value>[] values;
     private int n = 0;
     private static final int init_size = 2;
 
@@ -14,14 +14,14 @@ public class ListBST<Key extends Comparable<Key>>
         values = new ArrayList[size];
         for(int i = 0; i < values.length; i++)
         {
-            values[i] = new ArrayList();
+            values[i] = new ArrayList<>();
         }
     }
 
     private void resize(int capacity)
     {
         Key[]   tempk = (Key[]) new Comparable[capacity];
-        ArrayList[] tempv = new ArrayList[capacity];
+        ArrayList<Value>[] tempv = (ArrayList<Value>[]) new Object[capacity];
         for (int i = 0; i < n; i++)
         {
             tempk[i] = keys[i];
@@ -46,7 +46,7 @@ public class ListBST<Key extends Comparable<Key>>
         return n == 0;
     }
 
-    public ArrayList get(Key key)
+    public ArrayList<Value> get(Key key)
     {
         int i = rank(key);
         if(i < n && keys[i].compareTo(key) == 0)
@@ -72,7 +72,7 @@ public class ListBST<Key extends Comparable<Key>>
         return lo;
     }
 
-    public void put(Key key, int value)
+    public void put(Key key, Value value)
     {
         int i = rank(key);
 

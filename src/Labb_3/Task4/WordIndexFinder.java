@@ -9,22 +9,25 @@ public class WordIndexFinder
     {
         File theText = new File("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_3\\Task1\\TheText.txt");
         Scanner textReader = new Scanner(theText);
-        ListBST<String> lbst = new ListBST<String>(40000);
+        ListBST<String,Integer> lbst = new ListBST<String,Integer>(40000);
         String key;
         int index = 0;
         while(textReader.hasNextLine())
         {
-            key = textReader.next();
+            key = textReader.next().toLowerCase();
+            if(key.charAt(key.length()-1) == '.')
+                key = key.substring(0,key.length()-1);
+
             lbst.put(key,index);
             index += key.length() + 1;
         }
 
         Scanner strScan = new Scanner(System.in);
         Scanner intScan = new Scanner(System.in);
-        System.out.println("Type '1' to find another word, '2' to exit");
         int i = 0;
         while(i != 2)
         {
+            System.out.println("Type '1' to find a word, '2' to exit");
             i = intScan.nextInt();
             switch(i)
             {
