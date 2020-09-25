@@ -8,7 +8,6 @@ public class DistributedHash
     public static void main(String[] args) throws FileNotFoundException
     {
         File theText = new File("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_3\\Task1\\TheText.txt");
-        Scanner reader = new Scanner(theText);
         Scanner wordReader = new Scanner(theText);
         Scanner input = new Scanner(System.in);
         System.out.println("How many words do you want to read? Enter now: ");
@@ -19,10 +18,10 @@ public class DistributedHash
         int minlen = 3, iterations = 0;
         int key;
         String word;
-        while(reader.hasNextLine() && iterations < n)
+        while(wordReader.hasNextLine() && iterations < n)
         {
-            key = reader.next().hashCode();
             word = wordReader.next();
+            key = word.hashCode();
             if(word.length() < minlen)
                 continue;
             if(!bst.contains(key))
