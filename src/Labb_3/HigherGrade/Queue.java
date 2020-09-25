@@ -1,5 +1,8 @@
 package Labb_3.HigherGrade;
-public class Queue<Item>
+
+import java.util.Iterator;
+
+public class Queue<Item> implements Iterable<Item>
 {
     private Node<Item> first;    // beginning of queue
     private Node<Item> last;     // end of queue
@@ -12,26 +15,20 @@ public class Queue<Item>
         private Node<Item> next;
     }
 
-
     public Queue()
     {
         first = null;
         last  = null;
         n = 0;
     }
-
-
     public boolean isEmpty()
     {
         return first == null;
     }
-
     public int size()
     {
         return n;
     }
-
-
     public void enqueue(Item item)
     {
         Node<Item> oldlast = last;
@@ -42,8 +39,6 @@ public class Queue<Item>
         else           oldlast.next = last;
         n++;
     }
-
-
     public Item dequeue()
     {
         Item item = first.item;
@@ -51,5 +46,32 @@ public class Queue<Item>
         n--;
         if (isEmpty()) last = null;   // to avoid loitering
         return item;
+    }
+
+    public Iterator<Item> iterator()
+    {
+        return new LinkedIterator(first);
+    }
+
+    // an iterator, doesn't implement remove() since it's optional
+    private class LinkedIterator implements Iterator<Item>
+    {
+        private Node<Item> current;
+
+        public LinkedIterator(Node<Item> first)
+        {
+            current = first;
+        }
+
+
+        public boolean hasNext()  { return current != null;                     }
+        public void remove()      { throw new UnsupportedOperationException();  }
+
+        public Item next()
+        {
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
     }
 }

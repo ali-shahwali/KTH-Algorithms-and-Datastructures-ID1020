@@ -21,7 +21,7 @@ public class DistributedHash
         {
             word = wordReader.next();
             key = word.hashCode();
-            if(word.charAt(word.length()-1) == '.')
+            if(!Character.isAlphabetic(word.charAt(word.length()-1)))
                 word = word.substring(0,word.length()-1);
             if(word.length() < minlen)
                 continue;

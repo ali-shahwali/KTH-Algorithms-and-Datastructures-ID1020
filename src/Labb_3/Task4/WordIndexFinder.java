@@ -15,7 +15,7 @@ public class WordIndexFinder
         while(textReader.hasNextLine())
         {
             key = textReader.next().toLowerCase();
-            if(key.charAt(key.length()-1) == '.')
+            if(!Character.isAlphabetic(key.charAt(key.length()-1)))
                 key = key.substring(0,key.length()-1);
 
             lbst.put(key,index);

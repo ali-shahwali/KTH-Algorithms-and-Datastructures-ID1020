@@ -24,7 +24,8 @@ public class FrequencyCounterOrdArrST
             key = reader.next();
             if(key.length() < minlen)
                 continue;
-
+            if(!Character.isAlphabetic(key.charAt(key.length()-1)))
+                key = key.substring(0,key.length()-1);
             if(!st.contains(key))
             {
                 st.put(key, 1);

@@ -22,6 +22,9 @@ public class FrequencyCounterBST
             key = reader.next();
             if(key.length() < minLen)
                 continue;
+
+            if(!Character.isAlphabetic(key.charAt(key.length()-1)))
+                key = key.substring(0,key.length()-1);
             if(!bst.contains(key))
             {
                 bst.put(key, 1);

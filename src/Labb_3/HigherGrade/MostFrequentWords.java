@@ -7,23 +7,19 @@ public class MostFrequentWords
 {
     public static void main(String[] args) throws FileNotFoundException
     {
-        File text = new File("C:\\leipzig1m.txt");
+        File text = new File("C:\\Algoritmer\\leipzig1m.txt");
         Scanner reader = new Scanner(text);
         SeparateChainingHash<String, Integer> ht = new SeparateChainingHash<String, Integer>();
         String key;
         while(reader.hasNextLine())
         {
             key = reader.next();
-            if(key.charAt(key.length()-1) == '.')
+            if(key.charAt(key.length()-1) == '.' || key.charAt(key.length()-1) == ',')
                 key = key.substring(0,key.length()-1);
             if(ht.contains(key))
                 ht.put(key, ht.get(key) + 1);
             else
                 ht.put(key,1);
         }
-
-        //ListBST<Integer> lbst = new ListBST<Integer>();
-
-
     }
 }

@@ -1,5 +1,6 @@
 package Labb_3.Task4;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListBST<Key extends Comparable<Key>, Value>
 {
@@ -8,6 +9,10 @@ public class ListBST<Key extends Comparable<Key>, Value>
     private int n = 0;
     private static final int init_size = 2;
 
+    public ListBST()
+    {
+        this(init_size);
+    }
     public ListBST(int size)
     {
         keys = (Key[]) new Comparable[size];

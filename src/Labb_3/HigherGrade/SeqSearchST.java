@@ -60,10 +60,10 @@ public class SeqSearchST<Key, Value>
     public Iterable<Key> keys()
     {
         Queue<Key> queue = new Queue<Key>();
-        for(Node x = first; x != null; x = x.next)
-            queue.enqueue(x.key);
+        for(Node node = first; node != null; node = node.next)
+            queue.enqueue(node.key);
 
-        return (Iterable<Key>) queue;
+        return queue;
     }
 
 

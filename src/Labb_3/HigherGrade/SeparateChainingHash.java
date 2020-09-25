@@ -70,6 +70,6 @@ public class SeparateChainingHash<Key, Value>
             for (Key key : st[i].keys())
                 queue.enqueue(key);
         }
-        return (Iterable<Key>) queue;
+        return queue;
     }
 }
