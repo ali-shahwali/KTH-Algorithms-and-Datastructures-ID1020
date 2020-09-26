@@ -1,8 +1,6 @@
 package Labb_3.Task2;
-
-import java.util.Iterator;
-
-public class OrderedArrayST<Key extends Comparable<Key>, Value> implements Iterable<Key>
+import Labb_3.HigherGrade.Queue;
+public class OrderedArrayST<Key extends Comparable<Key>, Value>
 {
     private Key[] keys;
     private Value[] values;
@@ -112,38 +110,23 @@ public class OrderedArrayST<Key extends Comparable<Key>, Value> implements Itera
         return keys[0];
     }
 
-    public Iterator<Key> iterator()
+    public Iterable<Key> keys()
     {
-        return new keyIterator(keys[0]);
+        return keys(min(), max());
     }
 
-    private class keyIterator implements Iterator<Key>
+    public Iterable<Key> keys(Key lo, Key hi)
     {
-        Key currentKey;
-        int startPos;
-        private keyIterator(Key lo)
-        {
-            startPos = 0;
-            currentKey = lo;
-        }
+        Queue<Key> queue = new Queue<Key>();
+        if (lo.compareTo(hi) > 0)
+            return queue;
+        for (int i = rank(lo); i < rank(hi); i++)
+            queue.enqueue(keys[i]);
 
+        if (contains(hi))
+            queue.enqueue(keys[rank(hi)]);
 
-        public boolean hasNext()
-        {
-            return keys[startPos + 1] != null;
-        }
-
-
-        public Key next()
-        {
-            if(hasNext())
-            {
-                Key key = currentKey;
-                currentKey = keys[++startPos];
-                return key;
-            }
-            else
-                return currentKey;
-        }
+        return queue;
     }
+
 }

@@ -1,5 +1,4 @@
 package Labb_3.HigherGrade;
-
 public class SeparateChainingHash<Key, Value>
 {
     private static final int INIT_CAPACITY = 4;
@@ -17,8 +16,17 @@ public class SeparateChainingHash<Key, Value>
     {
         this.m = m;
         st = (SeqSearchST<Key, Value>[]) new SeqSearchST[m];
-        for (int i = 0; i < m; i++)
+        for(int i = 0; i < m; i++)
             st[i] = new SeqSearchST<Key, Value>();
+    }
+    public int size()
+    {
+        return n;
+    }
+
+    public boolean isEmpty()
+    {
+        return size() == 0;
     }
 
     private int hash(Key key)
@@ -63,11 +71,12 @@ public class SeparateChainingHash<Key, Value>
     {
         return get(key) != null;
     }
-
-    public Iterable<Key> keys() {
+    public Iterable<Key> keys()
+    {
         Queue<Key> queue = new Queue<Key>();
-        for (int i = 0; i < m; i++) {
-            for (Key key : st[i].keys())
+        for(int i = 0; i < m; i++)
+        {
+            for(Key key : st[i].keys())
                 queue.enqueue(key);
         }
         return queue;

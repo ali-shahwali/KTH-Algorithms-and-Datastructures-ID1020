@@ -8,7 +8,7 @@ public class FrequencyCounterOrdArrST
     public static void main(String[] args) throws FileNotFoundException
     {
         int minlen = 3;
-        File theText = new File("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_3\\Task1\\TheText.txt");
+        File theText = new File("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_3\\TheText.txt");
         Scanner reader = new Scanner(theText);
         Scanner input = new Scanner(System.in);
         System.out.println("How many words do you want to read? Enter now: ");
@@ -40,22 +40,7 @@ public class FrequencyCounterOrdArrST
             iterations++;
         }
         long finishTime = System.nanoTime();
-        /*
-        Iterator itr = st.iterator();
 
-        String maxKey = st.min();
-        int maxValue = st.get(maxKey);
-        String current;
-        for(int i = 0; i < iterations; i++)
-        {
-            current = (String) itr.next();
-            if(maxValue < st.get(current))
-            {
-                maxKey = current;
-                maxValue = st.get(current);
-            }
-        }
-        */
         System.out.println("Time elapsed: " + (double)(finishTime-startTime)/1000000000);
         System.out.println("Most frequent word was '" + mostFreq + "'," + " it appeared "
                 + st.get(mostFreq) + " times.");

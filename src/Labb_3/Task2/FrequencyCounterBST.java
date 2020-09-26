@@ -6,7 +6,7 @@ public class FrequencyCounterBST
 {
     public static void main(String[] args) throws FileNotFoundException
     {
-        File theText = new File("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_3\\Task1\\TheText.txt");
+        File theText = new File("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_3\\TheText.txt");
         Scanner reader = new Scanner(theText);
         Scanner input = new Scanner(System.in);
         System.out.println("How many words do you want to read? Enter now: ");

@@ -7,7 +7,7 @@ public class WordIndexFinder
 {
     public static void main(String[] args) throws FileNotFoundException
     {
-        File theText = new File("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_3\\Task1\\TheText.txt");
+        File theText = new File("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_3\\TheText.txt");
         Scanner textReader = new Scanner(theText);
         ListBST<String,Integer> lbst = new ListBST<String,Integer>(40000);
         String key;
@@ -15,11 +15,12 @@ public class WordIndexFinder
         while(textReader.hasNextLine())
         {
             key = textReader.next().toLowerCase();
+            int wordLen = key.length();
             if(!Character.isAlphabetic(key.charAt(key.length()-1)))
-                key = key.substring(0,key.length()-1);
+                key = key.substring(0, key.length() - 1);
 
             lbst.put(key,index);
-            index += key.length() + 1;
+            index += wordLen + 1;
         }
 
         Scanner strScan = new Scanner(System.in);

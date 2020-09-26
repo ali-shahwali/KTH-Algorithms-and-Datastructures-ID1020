@@ -28,6 +28,7 @@ public class SeqSearchST<Key, Value>
     {
         return n == 0;
     }
+
     public void put(Key key, Value value)
     {
         for(Node node = first; node != null; node = node.next)
