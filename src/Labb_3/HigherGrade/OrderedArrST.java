@@ -1,18 +1,16 @@
 package Labb_3.HigherGrade;
 
-import java.util.ArrayList;
-
 public class OrderedArrST
 {
     private int[] keys;
     private LinkedList[] values;
     private int n = 0;
-    private static final int init_size = 5;
+    private static final int init_size = 5000;
 
-    public OrderedArrST(int size)
+    public OrderedArrST()
     {
-        keys = new int[size];
-        values = new LinkedList[size];
+        keys = new int[init_size];
+        values = new LinkedList[init_size];
         for(int i = 0; i < values.length; i++)
         {
             values[i] = new LinkedList();
@@ -56,6 +54,19 @@ public class OrderedArrST
             return values[i].getAll();
 
         return null;
+    }
+
+    public int getFrequency(int k)
+    {
+        if(k >= n)
+            k = n;
+        return keys[n-k];
+    }
+    public String[] findKthMost(int k)
+    {
+        if(k >= n)
+            k = n;
+        return values[n-k].getAll();
     }
 
     public String[] max()

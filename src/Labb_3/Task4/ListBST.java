@@ -1,6 +1,5 @@
 package Labb_3.Task4;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListBST<Key extends Comparable<Key>, Value>
 {

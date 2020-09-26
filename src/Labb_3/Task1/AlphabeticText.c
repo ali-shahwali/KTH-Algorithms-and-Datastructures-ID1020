@@ -1,7 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
-
+/*
+    Reads every character from a file, removes the non alphabetic characters and prints
+    them to a new file.
+*/
 int main(void)
 {
     FILE *fp;
