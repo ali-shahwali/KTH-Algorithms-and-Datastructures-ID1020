@@ -1,4 +1,13 @@
 package Labb_3.HigherGrade;
+// code taken from Robert Sedgewick's and Kevin Wayne's booksite Algorithms 4th edition
+
+/*
+README
+    A hashmap is a data structure that uses hashing to use keys as indexing for an array, we use a hash function
+    to generate the array position. This is done by using javas hashCode() function, converting it in to a
+    positive number and also applying the modulo operand with the hashtable size. This is to
+    ensure that the hashcode is within array index bounds.
+*/
 public class SeparateChainingHash<Key, Value>
 {
     private static final int INIT_CAPACITY = 4;
@@ -7,11 +16,13 @@ public class SeparateChainingHash<Key, Value>
     private int m;                                // hash table size
     private SeqSearchST<Key, Value>[] st;
 
+    // constructor if size isnt given
     public SeparateChainingHash()
     {
         this(INIT_CAPACITY);
     }
 
+    // constructor
     public SeparateChainingHash(int m)
     {
         this.m = m;
@@ -29,11 +40,13 @@ public class SeparateChainingHash<Key, Value>
         return size() == 0;
     }
 
+    // hash function for keys, returns value between 0 and m-1
     private int hash(Key key)
     {
         return (key.hashCode() & 0x7fffffff) % m;
     }
 
+    // Resizing occurs if the average length of a list is greater than 10 times the hashmap size
     private void resize(int chains)
     {
         SeparateChainingHash<Key, Value> temp = new SeparateChainingHash<Key, Value>(chains);
@@ -49,12 +62,14 @@ public class SeparateChainingHash<Key, Value>
         this.st = temp.st;
     }
 
+    // retrieves the value paired with the key
     public Value get(Key key)
     {
         int i = hash(key);
         return st[i].get(key);
     }
 
+    // puts in a new key-value pair
     public void put(Key key, Value val)
     {
         // double table size if average length of list >= 10

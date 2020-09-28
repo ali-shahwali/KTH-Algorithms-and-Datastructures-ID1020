@@ -3,6 +3,7 @@ package Labb_3.Task2;
     Ordered Array Symbol Table using binary search
     We have an array for keys and an array for values, each key is paired with a value
     Keys are of type comparable. We continuously resize the arrays if more space is needed.
+    Used in task 2.
 */
 public class OrderedArrayST<Key extends Comparable<Key>, Value>
 {
@@ -34,7 +35,8 @@ public class OrderedArrayST<Key extends Comparable<Key>, Value>
 
     /*
         Retrieve rank of the key, if key is already in the array we replace the value
-        if number of pairs is equ
+        if number of pairs is equal to the key array size we perform resizing and doubling the size
+        we insert the new key and associated value at the correct rank
     */
     public void put(Key key, Value value)
     {
@@ -56,6 +58,7 @@ public class OrderedArrayST<Key extends Comparable<Key>, Value>
         n++;
     }
 
+    // retrieves value associated with given key
     public Value get(Key key)
     {
         if(isEmpty())
@@ -68,6 +71,7 @@ public class OrderedArrayST<Key extends Comparable<Key>, Value>
             return null;
     }
 
+    // uses binary search to find the rank of given key
     public int rank(Key key)
     {
         int lo = 0;
@@ -86,9 +90,9 @@ public class OrderedArrayST<Key extends Comparable<Key>, Value>
         return lo;
     }
 
+    // resizes the key and value arrays to given capacity
     private void resize(int capacity)
     {
-        assert capacity >= n;
         Key[]   tempk = (Key[])   new Comparable[capacity];
         Value[] tempv = (Value[]) new Object[capacity];
         for (int i = 0; i < n; i++) {
@@ -99,6 +103,7 @@ public class OrderedArrayST<Key extends Comparable<Key>, Value>
         keys = tempk;
     }
 
+    // checks if given key is already inside the ST
     public boolean contains(Key key)
     {
         return get(key) != null;

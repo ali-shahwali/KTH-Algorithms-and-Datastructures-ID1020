@@ -1,39 +1,55 @@
 package Labb_3.Task3;
-import Labb_3.Task2.BinarySearchTree;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+/*
+README
+    Stores every word from the text in a hashmap and allows the user to input how many words are to be stored.
+    It then prints out the average size of every hash bucket as well as the size of every bucket. An optimal hashmap
+    should have an average size of 1 meaning every bucket should contain 1 word.
+*/
 public class HashDistribution
 {
     public static void main(String[] args) throws FileNotFoundException
     {
         File theText = new File("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_3\\TheText.txt");
-        Scanner wordReader = new Scanner(theText);
-        Scanner input = new Scanner(System.in);
-        System.out.println("How many words do you want to read? Enter now: ");
+        Scanner scan = new Scanner(System.in);
+        System.out.println("How many words are to be read?");
+        int n = scan.nextInt();
 
-        BinarySearchTree<Integer, String> bst = new BinarySearchTree<Integer, String>();
-
-        int key;
-        String word;
-        while(wordReader.hasNextLine())
+        SeparateChainingHash<String, Integer> ht = new SeparateChainingHash<String, Integer>();
+        char ch;
+        String key;
+        StringBuilder sb = new StringBuilder("");
+        int words = 0;
+        System.setIn(new FileInputStream(theText));
+        while(!StdIn.isEmpty() && words < n)
         {
-            word = wordReader.next();
-            key = word.hashCode();
-            if(!Character.isAlphabetic(word.charAt(word.length()-1)))
-                word = word.substring(0,word.length()-1);
-            if(!bst.contains(key))
-            {
-                bst.put(key,word);
-                continue;
-            }
-            if(!(bst.get(key).equals(word)))
-            {
-                System.out.println("Duplicate: ");
-                System.out.println(word + " " + word.hashCode());
-                System.out.println(bst.get(key) + " " + key);
-                System.out.println();
-            }
+            ch = StdIn.readChar();
+             if(ch == '\r')
+                 continue;
+             if(Character.isAlphabetic(ch))
+                 sb.append(ch);
+             else if(sb.length() >= 1)
+             {
+                 key = sb.toString().toLowerCase();
+                 if(!ht.contains(key))
+                 {
+                     ht.put(key, 1);
+                     words++;
+                 }
+                 else
+                     ht.put(key, ht.get(key) + 1);
+                 sb.delete(0,sb.length());
+             }
         }
+
+        int averageSize = ht.averageBucketSize();
+        System.out.println("The average size of each bucket is " + averageSize);
+        System.out.println("Size of each bucket is: ");
+        ht.bucketSize();
+
     }
 }

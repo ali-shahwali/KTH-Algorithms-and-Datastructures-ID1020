@@ -1,48 +1,57 @@
 package Labb_3.HigherGrade;
+
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
+/*
+    Stores every word read from the text inside a separate chaining hashmap, the key is the word and the value
+    is every occurrence of the word. All data is then transferred to an ordered array symbol table that
+    utilises binary search, the key is the word frequency and the value is every word with that frequency.
+    Because the ordered array is sorted we have a constant access time O(1). We only read
+    the text when inserting all the data in to our hashmap according to the assignment requirements.
+*/
 public class MostFrequentWords
 {
     public static void main(String[] args) throws FileNotFoundException
     {
         File text = new File("C:\\Algoritmer\\leipzig1m.txt");
-        Scanner reader = new Scanner(text);
+        Scanner intScan = new Scanner(System.in);
         SeparateChainingHash<String, Integer> ht = new SeparateChainingHash<String, Integer>();
-        String key;
-        long startTime = System.nanoTime();
-        StringBuilder sb;
-        while(reader.hasNextLine())
-        {
-            key = reader.next().toLowerCase();
-            sb = new StringBuilder("");
-            for(int i = 0; i < key.length();i++)
-            {
-                if(Character.isAlphabetic(key.charAt(i)))
-                    sb.append(key.charAt(i));
-            }
-            key = sb.toString();
-            if(key.length() == 0)
-                continue;
-            if(ht.contains(key))
-                ht.put(key, ht.get(key) + 1);
-            else
-                ht.put(key,1);
-        }
-        long finishTime = System.nanoTime();
-        System.out.println("Time elapsed: " + (double)(finishTime-startTime)/1000000000);
 
+        char ch;
+        StringBuilder sb = new StringBuilder("");
+        String key;
+        System.setIn(new FileInputStream(text));
+        long startTime = System.nanoTime();
+        while(!StdIn.isEmpty())
+        {
+            ch = StdIn.readChar();
+            if(Character.isAlphabetic(ch))
+                sb.append(ch);
+            else if(sb.length() >= 1)
+            {
+                key = sb.toString().toLowerCase();
+                if(!ht.contains(key))
+                    ht.put(key,1);
+                else
+                    ht.put(key, ht.get(key) + 1);
+
+                sb.delete(0, sb.length());
+            }
+        }
+
+        // moves all data in the hashmap to the augmented ordered array
         OrderedArrST orderedST = new OrderedArrST();
-        startTime = System.nanoTime();
         for(String s : ht.keys())
         {
             orderedST.put(ht.get(s),s);
         }
-        finishTime = System.nanoTime();
+        long finishTime = System.nanoTime();
         System.out.println("Time elapsed: " + (double)(finishTime-startTime)/1000000000);
 
-        Scanner intScan = new Scanner(System.in);
+        // returns the kth most used word/words in constant time, or kth to nth most used word in constant time.
         int i = 0;
         while(i != 3)
         {
@@ -56,6 +65,7 @@ public class MostFrequentWords
                     int k = intScan.nextInt();
                     System.out.println(Arrays.toString(orderedST.findKthMost(k)) + " "+ orderedST.getFrequency(k) +" occurrences");
                     break;
+
                 case 2:
                     System.out.println("Example: Typing '1' then '3' will give the most used, and up to and including the" +
                             " 4th most used word/words");
@@ -69,10 +79,10 @@ public class MostFrequentWords
                         k++;
                     }
                     break;
+
                 default:
                     break;
             }
         }
-
     }
 }

@@ -1,8 +1,13 @@
 package Labb_3.Task2;
 import java.io.FileNotFoundException;
-//import java.util.Iterator;
 import java.util.Scanner;
 import java.io.File;
+
+/*
+    Uses a ordered array symbol table to find the most occurring word, the number of distinct words as well as
+    storing them in the table. Execution time is tracked using System.nanoTime(). Allows the user to choose
+    how many words to read in.
+*/
 public class FrequencyCounterOrdArrST
 {
     public static void main(String[] args) throws FileNotFoundException

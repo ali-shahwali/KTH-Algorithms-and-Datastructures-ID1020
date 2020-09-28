@@ -1,12 +1,16 @@
 package Labb_3.HigherGrade;
-
+/*
+README
+    Non-generic ordered array symbol table using binary search, every key is an integer and every value is a linked list.
+    Used in the higher grade assignment to sort the frequency of every word.
+*/
 public class OrderedArrST
 {
     private int[] keys;
     private LinkedList[] values;
     private int n = 0;
-    private static final int init_size = 5000;
-
+    private static final int init_size = 1000;
+    // constructor with initial size 1000
     public OrderedArrST()
     {
         keys = new int[init_size];
@@ -21,6 +25,9 @@ public class OrderedArrST
     {
         int[] tempk = new int[capacity];
         LinkedList[] tempv = new LinkedList[capacity];
+        for(int i = 0; i < tempv.length; i++)
+            tempv[i] = new LinkedList();
+
         for (int i = 0; i < n; i++)
         {
             tempk[i] = keys[i];
@@ -56,12 +63,14 @@ public class OrderedArrST
         return null;
     }
 
+    // returns the key at index n - k
     public int getFrequency(int k)
     {
         if(k >= n)
             k = n;
         return keys[n-k];
     }
+    // returns the linked list at index n-k, returns it in the form of a string array
     public String[] findKthMost(int k)
     {
         if(k >= n)
@@ -80,7 +89,6 @@ public class OrderedArrST
     }
 
 
-
     public void put(int key, String value)
     {
         int i = rank(key);
@@ -96,6 +104,7 @@ public class OrderedArrST
         if (n == keys.length)
             resize(2*keys.length);
 
+        // moves whole linked lists and integer keys
         for (int j = n; j > i; j--)
         {
             keys[j] = keys[j-1];

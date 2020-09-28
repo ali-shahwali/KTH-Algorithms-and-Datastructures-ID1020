@@ -2,6 +2,12 @@ package Labb_3.Task2;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+
+/*
+    Uses a binary search tree to find the most occurring word, the number of distinct words as well as
+    storing them in the tree. Execution time is tracked using System.nanoTime(). Allows the user to choose
+    how many words to read in.
+*/
 public class FrequencyCounterBST
 {
     public static void main(String[] args) throws FileNotFoundException
@@ -16,6 +22,7 @@ public class FrequencyCounterBST
         int iterations = 0, distinct = 0, minLen = 3;
         String key, mostFreq = "H";
         bst.put(mostFreq,0);
+
         long startTime = System.nanoTime();
         while(reader.hasNextLine() && iterations < n)
         {

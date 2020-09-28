@@ -1,5 +1,8 @@
 package Labb_3.HigherGrade;
-
+/*
+README
+    Linked list used in the higher grade assignment
+*/
 public class LinkedList
 {
     private Node head;
@@ -36,6 +39,8 @@ public class LinkedList
         }
         size++;
     }
+
+    // removes every node in the list by making them null
     public void clear()
     {
         while(head != null)
@@ -44,6 +49,7 @@ public class LinkedList
         }
         size = 0;
     }
+    // used for moving whole lists, adds every element from a string array to the linked list
     public void addAll(String[] data)
     {
         for(int i = 0; i < data.length;i++)
@@ -52,6 +58,7 @@ public class LinkedList
         }
         size = data.length;
     }
+    // returns the whole list as a string array
     public String[] getAll()
     {
         String[] list = new String[size];
