@@ -1,6 +1,5 @@
 package Labb_4.Task1;
-import Labb_4.Graph;
-import Labb_4.Stack;
+import Labb_4.*;
 public class DepthFirstPaths
 {
     private boolean[] marked;    // marked[v] = is there an s-v path?
@@ -10,8 +9,8 @@ public class DepthFirstPaths
     public DepthFirstPaths(Graph g, int s)
     {
         this.s = s;
-        edgeTo = new int[g.vertices()];
-        marked = new boolean[g.vertices()];
+        edgeTo = new int[g.V()];
+        marked = new boolean[g.V()];
         validateVertex(s);
         dfs(g, s);
     }
