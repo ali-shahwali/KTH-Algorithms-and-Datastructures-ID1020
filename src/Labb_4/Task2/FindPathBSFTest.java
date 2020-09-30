@@ -2,7 +2,6 @@ package Labb_4.Task2;
 
 import Labb_4.Graph;
 import Labb_4.SymbolGraph;
-
 import java.util.Scanner;
 
 public class FindPathBSFTest

@@ -1,7 +1,10 @@
 package Labb_4.Task1;
-import Labb_4.*;
+
+import Labb_4.SymbolGraph;
+import Labb_4.Graph;
 import java.util.Scanner;
-public class FindPathTest
+
+public class FindPathDFSTest
 {
     public static void main(String[] args)
     {
