@@ -2,19 +2,13 @@ package Labb_4.HigherGrade;
 
 public class DijkstraShortestPath
 {
+    private static final double INFINITY = Double.POSITIVE_INFINITY;
+
     private double[] distTo;          // distTo[v] = distance  of shortest s->v path
     private Edge[] edgeTo;            // edgeTo[v] = last edge on shortest s->v path
     private IndexMinPQ<Double> pq;    // priority queue of vertices
 
-    /**
-     * Computes a shortest-paths tree from the source vertex {@code s} to every
-     * other vertex in the edge-weighted graph {@code G}.
-     *
-     * @param  G the edge-weighted digraph
-     * @param  s the source vertex
-     * @throws IllegalArgumentException if an edge weight is negative
-     * @throws IllegalArgumentException unless {@code 0 <= s < V}
-     */
+    // uses dijkstras shortest path algorithm to find the shortest path from s to all reachable vertices in the graph
     public DijkstraShortestPath(EdgeWeightedGraph G, int s)
     {
         for (Edge e : G.edges())
@@ -29,7 +23,7 @@ public class DijkstraShortestPath
         validateVertex(s);
 
         for (int v = 0; v < G.V(); v++)
-            distTo[v] = Double.POSITIVE_INFINITY;
+            distTo[v] = INFINITY;
         distTo[s] = 0.0;
 
         // relax vertices in order of distance from s
@@ -46,7 +40,7 @@ public class DijkstraShortestPath
         assert check(G, s);
     }
 
-    // relax edge e and update pq if changed
+    // relax edge e and update priority queue if changed
     private void relax(Edge e, int v)
     {
         int w = e.other(v);
@@ -54,39 +48,26 @@ public class DijkstraShortestPath
         {
             distTo[w] = distTo[v] + e.weight();
             edgeTo[w] = e;
-            if (pq.contains(w)) pq.decreaseKey(w, distTo[w]);
-            else                pq.insert(w, distTo[w]);
+
+            if (pq.contains(w))
+                pq.decreaseKey(w, distTo[w]);
+            else
+                pq.insert(w, distTo[w]);
         }
     }
 
-    /**
-     * Returns the length of a shortest path between the source vertex {@code s} and
-     * vertex {@code v}.
-     *
-     * @param  v the destination vertex
-     * @return the length of a shortest path between the source vertex {@code s} and
-     *         the vertex {@code v}; {@code Double.POSITIVE_INFINITY} if no such path
-     * @throws IllegalArgumentException unless {@code 0 <= v < V}
-     */
+    // return the distance from vertice v to source s
     public double distTo(int v)
     {
         validateVertex(v);
         return distTo[v];
     }
 
-    /**
-     * Returns true if there is a path between the source vertex {@code s} and
-     * vertex {@code v}.
-     *
-     * @param  v the destination vertex
-     * @return {@code true} if there is a path between the source vertex
-     *         {@code s} to vertex {@code v}; {@code false} otherwise
-     * @throws IllegalArgumentException unless {@code 0 <= v < V}
-     */
+    // return true if there is a distance from v to s that is less than infinity
     public boolean hasPathTo(int v)
     {
         validateVertex(v);
-        return distTo[v] < Double.POSITIVE_INFINITY;
+        return distTo[v] < INFINITY;
     }
 
     /**
@@ -175,7 +156,7 @@ public class DijkstraShortestPath
         return true;
     }
 
-    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    // throw an IllegalArgumentException if v is less than zero or larger than the total amount of vertices
     private void validateVertex(int v)
     {
         int V = distTo.length;

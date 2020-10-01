@@ -1,7 +1,6 @@
 package Labb_4.HigherGrade;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 public class Stack<Item> implements Iterable<Item>
 {
@@ -16,7 +15,8 @@ public class Stack<Item> implements Iterable<Item>
     }
 
 
-    public Stack() {
+    public Stack()
+    {
         first = null;
         n = 0;
     }
@@ -41,19 +41,8 @@ public class Stack<Item> implements Iterable<Item>
         n++;
     }
 
-
-    public Item pop()
-    {
-        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
-        Item item = first.item;        // save item to return
-        first = first.next;            // delete first node
-        n--;
-        return item;                   // return the saved item
-    }
-
     public Item peek()
     {
-        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
         return first.item;
     }
 
@@ -88,13 +77,8 @@ public class Stack<Item> implements Iterable<Item>
             return current != null;
         }
 
-        public void remove() {
-            throw new UnsupportedOperationException();
-        }
-
         public Item next()
         {
-            if (!hasNext()) throw new NoSuchElementException();
             Item item = current.item;
             current = current.next;
             return item;

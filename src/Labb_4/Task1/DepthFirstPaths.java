@@ -1,5 +1,6 @@
 package Labb_4.Task1;
-import Labb_4.*;
+import Labb_4.Graph;
+import Labb_4.Stack;
 public class DepthFirstPaths
 {
     private boolean[] marked;    // marked[v] = is there an s-v path?

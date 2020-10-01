@@ -15,16 +15,25 @@ public class ShortestPathTest
         int endPoint = scan.nextInt();
         System.out.println("What point should it pass through?");
         int betweenPoint = scan.nextInt();
-
-        DijkstraShortestPath dsp = new DijkstraShortestPath(ewg,startPoint);
-        if(dsp.hasPathTo(betweenPoint) && dsp.hasPathTo(endPoint))
+        double distance = 0;
+        DijkstraShortestPath dspStart = new DijkstraShortestPath(ewg,startPoint);
+        DijkstraShortestPath dspEnd = new DijkstraShortestPath(ewg, betweenPoint);
+        if(dspStart.hasPathTo(betweenPoint) && dspEnd.hasPathTo(endPoint))
         {
-            for(Edge x : dsp.pathTo(betweenPoint))
+            for(Edge x : dspStart.pathTo(betweenPoint))
             {
-                if(x.)
+                System.out.println(x);
+                distance += x.weight();
+            }
+            for(Edge x : dspEnd.pathTo(endPoint))
+            {
+                System.out.println(x);
+                distance += x.weight();
             }
         }
         else
             System.out.println("No such path from " + startPoint + " to " + " through " +betweenPoint);
+
+        System.out.println("Total distance: " + (int)distance);
     }
 }

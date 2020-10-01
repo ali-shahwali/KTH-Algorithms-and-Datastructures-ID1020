@@ -1,19 +1,19 @@
 package Labb_4;
 
-public class SymbolDigraph {
-    private ST<String, Integer> st;  // string -> index
+public class SymbolDigraph
+{
+    private OrderedArrayST<String, Integer> st;  // string -> index
     private String[] keys;           // index  -> string
     private Digraph digraph;             // the underlying graph
 
 
     public SymbolDigraph(String filename, String delimiter)
     {
-        st = new ST<String, Integer>();
+        st = new OrderedArrayST<String, Integer>();
 
         // First pass builds the index by reading strings to associate
         // distinct strings with an index
         In in = new In(filename);
-        // while (in.hasNextLine()) {
         while (!in.isEmpty())
         {
             String[] a = in.readLine().split(delimiter);

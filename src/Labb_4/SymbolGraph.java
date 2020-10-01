@@ -1,14 +1,14 @@
 package Labb_4;
 public class SymbolGraph
 {
-    private ST<String, Integer> st;  // string -> index
+    private OrderedArrayST<String, Integer> st;  // string -> index
     private String[] keys;           // index  -> string
     private Graph graph;             // the underlying graph
 
 
     public SymbolGraph(String filename, String delimiter)
     {
-        st = new ST<String, Integer>();
+        st = new OrderedArrayST<String, Integer>();
 
         // First pass builds the index by reading strings to associate
         // distinct strings with an index
