@@ -1,12 +1,13 @@
 package Labb_4.HigherGrade;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 public class ShortestPathTest
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws FileNotFoundException
     {
         File nyc = new File("C:\\Algoritmer\\NYC.txt");
-        EdgeWeightedGraph ewg = new EdgeWeightedGraph(new In(nyc));
+        EdgeWeightedGraph ewg = new EdgeWeightedGraph(nyc);
         Scanner scan = new Scanner(System.in);
 
         System.out.println("What is the start point?");
