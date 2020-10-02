@@ -2,13 +2,17 @@ package Labb_4.Task1;
 
 import Labb_4.SymbolGraph;
 import Labb_4.Graph;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class FindPathDFSTest
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws FileNotFoundException
     {
-        SymbolGraph sg = new SymbolGraph("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_4\\TheDatabase.txt", " ");
+        File database = new File("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_4\\TheDatabase.txt");
+        SymbolGraph sg = new SymbolGraph(database, " ");
         Scanner scan = new Scanner(System.in);
         Graph g = sg.graph();
         System.out.println("Enter source state");

@@ -1,12 +1,14 @@
 package Labb_4.Task3;
 import Labb_4.Digraph;
 import Labb_4.SymbolDigraph;
+import java.io.FileNotFoundException;
+import java.io.File;
 import java.util.Scanner;
 public class DigraphHasPathTest
 {
-    public static void main(String[] args)
-    {
-        SymbolDigraph sdg = new SymbolDigraph("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_4\\TheDatabase.txt", " ");
+    public static void main(String[] args) throws FileNotFoundException {
+        File database = new File("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_4\\TheDatabase.txt");
+        SymbolDigraph sdg = new SymbolDigraph(database, " ");
         Scanner scan = new Scanner(System.in);
         Digraph dg = sdg.graph();
 

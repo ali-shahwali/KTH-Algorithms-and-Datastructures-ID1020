@@ -1,22 +1,26 @@
 package Labb_4;
+
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.File;
 public class SymbolGraph
 {
-    private OrderedArrayST<String, Integer> st;  // string -> index
+    private SequentialSearchST<String, Integer> st;  // string -> index
     private String[] keys;           // index  -> string
     private Graph graph;             // the underlying graph
 
 
-    public SymbolGraph(String filename, String delimiter)
+    public SymbolGraph(File file, String delimiter) throws FileNotFoundException
     {
-        st = new OrderedArrayST<String, Integer>();
+        st = new SequentialSearchST<String, Integer>();
 
         // First pass builds the index by reading strings to associate
         // distinct strings with an index
-        In in = new In(filename);
+        Scanner in = new Scanner(file);
         // while (in.hasNextLine()) {
-        while (!in.isEmpty())
+        while (in.hasNextLine())
         {
-            String[] a = in.readLine().split(delimiter);
+            String[] a = in.nextLine().split(delimiter);
             for (int i = 0; i < a.length; i++)
             {
                 if (!st.contains(a[i]))
@@ -34,10 +38,10 @@ public class SymbolGraph
         // second pass builds the graph by connecting first vertex on each
         // line to all others
         graph = new Graph(st.size());
-        in = new In(filename);
+        in = new Scanner(file);
         while (in.hasNextLine())
         {
-            String[] a = in.readLine().split(delimiter);
+            String[] a = in.nextLine().split(delimiter);
             int v = st.get(a[0]);
             for (int i = 1; i < a.length; i++)
             {

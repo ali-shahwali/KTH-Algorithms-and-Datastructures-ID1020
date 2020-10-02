@@ -3,7 +3,6 @@ package Labb_4;
     Ordered Array Symbol Table using binary search
     We have an array for keys and an array for values, each key is paired with a value
     Keys are of type comparable. We continuously resize the arrays if more space is needed.
-    Used in task 2.
 */
 public class OrderedArrayST<Key extends Comparable<Key>, Value>
 {

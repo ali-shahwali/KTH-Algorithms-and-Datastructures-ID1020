@@ -1,22 +1,27 @@
 package Labb_4;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class SymbolDigraph
 {
-    private OrderedArrayST<String, Integer> st;  // string -> index
+    private SequentialSearchST<String, Integer> st;  // string -> index
     private String[] keys;           // index  -> string
     private Digraph digraph;             // the underlying graph
 
 
-    public SymbolDigraph(String filename, String delimiter)
+    public SymbolDigraph(File file, String delimiter) throws FileNotFoundException
     {
-        st = new OrderedArrayST<String, Integer>();
+        st = new SequentialSearchST<String, Integer>();
 
         // First pass builds the index by reading strings to associate
         // distinct strings with an index
-        In in = new In(filename);
-        while (!in.isEmpty())
+
+        Scanner in = new Scanner(file);
+        while(in.hasNextLine())
         {
-            String[] a = in.readLine().split(delimiter);
+            String[] a = in.nextLine().split(delimiter);
             for (int i = 0; i < a.length; i++)
             {
                 if (!st.contains(a[i]))
@@ -34,10 +39,10 @@ public class SymbolDigraph
         // second pass builds the graph by connecting first vertex on each
         // line to all others
         digraph = new Digraph(st.size());
-        in = new In(filename);
+        in = new Scanner(file);
         while (in.hasNextLine())
         {
-            String[] a = in.readLine().split(delimiter);
+            String[] a = in.nextLine().split(delimiter);
             int v = st.get(a[0]);
             for (int i = 1; i < a.length; i++)
             {

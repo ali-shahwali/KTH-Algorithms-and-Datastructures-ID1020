@@ -2,7 +2,7 @@ package Labb_4.Task3;
 import Labb_4.Digraph;
 public class DigraphDFP
 {
-    private boolean[] marked;  // marked[v] = true iff v is reachable from source(s)
+    private boolean[] marked;  // marked[v] = true if v is reachable from source(s)
     private int count;         // number of vertices reachable from source(s)
 
     /**
@@ -19,32 +19,14 @@ public class DigraphDFP
         dfs(G, s);
     }
 
-    /**
-     * Computes the vertices in digraph {@code G} that are
-     * connected to any of the source vertices {@code sources}.
-     * @param G the graph
-     * @param sources the source vertices
-     * @throws IllegalArgumentException if {@code sources} is {@code null}
-     * @throws IllegalArgumentException unless {@code 0 <= s < V}
-     *         for each vertex {@code s} in {@code sources}
-     */
-    public DigraphDFP(Digraph G, Iterable<Integer> sources)
-    {
-        marked = new boolean[G.V()];
-        validateVertices(sources);
-        for (int v : sources)
-        {
-            if (!marked[v]) dfs(G, v);
-        }
-    }
-
     private void dfs(Digraph G, int v)
     {
         count++;
         marked[v] = true;
         for (int w : G.adj(v))
         {
-            if (!marked[w]) dfs(G, w);
+            if (!marked[w])
+                dfs(G, w);
         }
     }
 
@@ -84,15 +66,13 @@ public class DigraphDFP
     private void validateVertices(Iterable<Integer> vertices)
     {
         if (vertices == null)
-        {
             throw new IllegalArgumentException("argument is null");
-        }
+
         for (Integer v : vertices)
         {
             if (v == null)
-            {
                 throw new IllegalArgumentException("vertex is null");
-            }
+
             validateVertex(v);
         }
     }
