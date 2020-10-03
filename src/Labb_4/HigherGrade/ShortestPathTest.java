@@ -7,15 +7,20 @@ public class ShortestPathTest
     public static void main(String[] args) throws FileNotFoundException
     {
         File nyc = new File("C:\\Algoritmer\\NYC.txt");
-        EdgeWeightedGraph ewg = new EdgeWeightedGraph(nyc);
-        Scanner scan = new Scanner(System.in);
+        EdgeWeightedGraph ewg = new EdgeWeightedGraph(new Scanner(nyc));
 
+        Scanner scan = new Scanner(System.in);
         System.out.println("What is the start point?");
         int startPoint = scan.nextInt();
+
         System.out.println("What is the end point?");
         int endPoint = scan.nextInt();
+
         System.out.println("What point should it pass through?");
         int betweenPoint = scan.nextInt();
+
+        scan.close();
+
         double distance = 0;
         DijkstraShortestPath dspStart = new DijkstraShortestPath(ewg,startPoint);
         DijkstraShortestPath dspEnd = new DijkstraShortestPath(ewg, betweenPoint);

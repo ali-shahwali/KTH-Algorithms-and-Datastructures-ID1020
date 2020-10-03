@@ -1,10 +1,6 @@
 package Labb_4.HigherGrade;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
-
 public class EdgeWeightedGraph
 {
     private static final String NEWLINE = System.getProperty("line.separator");
@@ -14,8 +10,8 @@ public class EdgeWeightedGraph
     private Bag<Edge>[] adj;
 
 
-    public EdgeWeightedGraph(File file) throws FileNotFoundException {
-        Scanner in = new Scanner(file);
+    public EdgeWeightedGraph(Scanner in)
+    {
         V = in.nextInt();
         adj = (Bag<Edge>[]) new Bag[V];
         for (int v = 0; v < V; v++)
@@ -35,6 +31,7 @@ public class EdgeWeightedGraph
             Edge e = new Edge(v, w, weight);
             addEdge(e);
         }
+        in.close();
     }
 
 

@@ -9,9 +9,9 @@ public class DigraphHasPathTest
     public static void main(String[] args) throws FileNotFoundException {
         File database = new File("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_4\\TheDatabase.txt");
         SymbolDigraph sdg = new SymbolDigraph(database, " ");
-        Scanner scan = new Scanner(System.in);
         Digraph dg = sdg.graph();
 
+        Scanner scan = new Scanner(System.in);
         System.out.println("Enter source state");
         String sourceState = scan.nextLine().toUpperCase();
         System.out.println("What state do you want the path to?");

@@ -13,12 +13,16 @@ public class FindPathBSFTest
     {
         File database = new File("C:\\Users\\ali_z\\IdeaProjects\\KTH-Algoritmer-Datastrukturer-ID1020\\src\\Labb_4\\TheDatabase.txt");
         SymbolGraph sg = new SymbolGraph(database, " ");
-        Scanner scan = new Scanner(System.in);
         Graph g = sg.graph();
+
+        Scanner scan = new Scanner(System.in);
         System.out.println("Enter source state");
         String sourceState = scan.nextLine().toUpperCase();
+
         System.out.println("What state do you want the path to?");
         String endState = scan.nextLine().toUpperCase();
+
+        scan.close();
 
         int start = sg.indexOf(sourceState);
         int end = sg.indexOf(endState);

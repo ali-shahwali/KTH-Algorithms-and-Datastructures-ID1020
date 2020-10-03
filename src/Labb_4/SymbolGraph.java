@@ -14,10 +14,8 @@ public class SymbolGraph
     {
         st = new SequentialSearchST<String, Integer>();
 
-        // First pass builds the index by reading strings to associate
-        // distinct strings with an index
         Scanner in = new Scanner(file);
-        // while (in.hasNextLine()) {
+
         while (in.hasNextLine())
         {
             String[] a = in.nextLine().split(delimiter);
@@ -49,6 +47,7 @@ public class SymbolGraph
                 graph.addEdge(v, w);
             }
         }
+        in.close();
     }
 
 

@@ -11,12 +11,7 @@ public class Digraph
     private Bag<Integer>[] adj;    // adj[v] = adjacency list for vertex v
     private int[] indegree;        // indegree[v] = indegree of vertex v
 
-    /**
-     * Initializes an empty digraph with <em>V</em> vertices.
-     *
-     * @param  V the number of vertices
-     * @throws IllegalArgumentException if {@code V < 0}
-     */
+    // creates empty digraph with V vertices
     public Digraph(int V)
     {
         if (V < 0)
@@ -32,41 +27,27 @@ public class Digraph
     }
 
 
-    /**
-     * Returns the number of vertices in this digraph.
-     *
-     * @return the number of vertices in this digraph
-     */
+    // returns number of vertices in digraph
     public int V()
     {
         return V;
     }
 
-    /**
-     * Returns the number of edges in this digraph.
-     *
-     * @return the number of edges in this digraph
-     */
+    // returns number of edges in digraph
     public int E()
     {
         return E;
     }
 
 
-    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    // checks if inputted vertice is within bounds
     private void validateVertex(int v)
     {
         if (v < 0 || v >= V)
             throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
-    /**
-     * Adds the directed edge v→w to this digraph.
-     *
-     * @param  v the tail vertex
-     * @param  w the head vertex
-     * @throws IllegalArgumentException unless both {@code 0 <= v < V} and {@code 0 <= w < V}
-     */
+    // adds a directed edge that goes from v to w
     public void addEdge(int v, int w)
     {
         validateVertex(v);
@@ -76,13 +57,7 @@ public class Digraph
         E++;
     }
 
-    /**
-     * Returns the vertices adjacent from vertex {@code v} in this digraph.
-     *
-     * @param  v the vertex
-     * @return the vertices adjacent from vertex {@code v} in this digraph, as an iterable
-     * @throws IllegalArgumentException unless {@code 0 <= v < V}
-     */
+    // returns the adjacent vertices as an iterable
     public Iterable<Integer> adj(int v)
     {
         validateVertex(v);
