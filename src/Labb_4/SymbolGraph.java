@@ -3,13 +3,19 @@ package Labb_4;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.File;
+
+/*
+README
+    A symbol graph is a graph that has corresponding string names as vertices instead of integers.
+    Used in task 1 and 2 to represent the states of america in numerical form
+*/
 public class SymbolGraph
 {
     private SequentialSearchST<String, Integer> st;  // string -> index
     private String[] keys;           // index  -> string
     private Graph graph;             // the underlying graph
 
-
+    // takes a file and a delimiter such as space or , and creates a corresponding graph with numerical values as vertices
     public SymbolGraph(File file, String delimiter) throws FileNotFoundException
     {
         st = new SequentialSearchST<String, Integer>();
@@ -33,70 +39,38 @@ public class SymbolGraph
             keys[st.get(name)] = name;
         }
 
-        // second pass builds the graph by connecting first vertex on each
-        // line to all others
+        // second pass builds the graph by connecting first vertex on each line to all others
         graph = new Graph(st.size());
         in = new Scanner(file);
         while (in.hasNextLine())
         {
             String[] a = in.nextLine().split(delimiter);
             int v = st.get(a[0]);
-            for (int i = 1; i < a.length; i++)
-            {
-                int w = st.get(a[i]);
-                graph.addEdge(v, w);
-            }
+            int w = st.get(a[1]);
+            graph.addEdge(v, w);
         }
         in.close();
     }
 
-
-    public boolean contains(String s)
-    {
-        return st.contains(s);
-    }
-
-
-    @Deprecated
-    public int index(String s)
-    {
-        return st.get(s);
-    }
-
-
+    // returns the representing vertice of a symbol
     public int indexOf(String s)
     {
         return st.get(s);
     }
 
-
-    @Deprecated
-    public String name(int v)
-    {
-        validateVertex(v);
-        return keys[v];
-    }
-
+    // returns the representing symbol of a vertice
     public String nameOf(int v)
     {
         validateVertex(v);
         return keys[v];
     }
 
-
-    @Deprecated
-    public Graph G()
-    {
-        return graph;
-    }
-
-
+    // returns the graph using numerical values representing the symbol graph
     public Graph graph()
     {
         return graph;
     }
 
-    // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v)
     {
         int V = graph.V();

@@ -6,7 +6,11 @@ import Labb_4.Graph;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+/*
+README
+    Uses depth-first search to find a path from an inputted start state to an inputted end state.
+    Prints out the path.
+*/
 public class FindPathDFSTest
 {
     public static void main(String[] args) throws FileNotFoundException

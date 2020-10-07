@@ -1,4 +1,10 @@
 package Labb_4;
+/*
+README
+    Sequential search symbol table consists of a key-value pairs where each pair is a node that links
+    to another key-value pair, searching is done sequentially meaning we iterate through the whole list for our key
+    and there is no order.
+*/
 
 public class SequentialSearchST<Key, Value> {
     private int n;           // number of key-value pairs
@@ -19,56 +25,28 @@ public class SequentialSearchST<Key, Value> {
         }
     }
 
-    /**
-     * Initializes an empty symbol table.
-     */
-    public SequentialSearchST()
-    {
+    // Initializes an empty symbol table.
+    public SequentialSearchST() { }
 
-    }
-
-    /**
-     * Returns the number of key-value pairs in this symbol table.
-     *
-     * @return the number of key-value pairs in this symbol table
-     */
+    // return the size of the symbol table
     public int size()
     {
         return n;
     }
 
-    /**
-     * Returns true if this symbol table is empty.
-     *
-     * @return {@code true} if this symbol table is empty;
-     *         {@code false} otherwise
-     */
+    // return true if ST is empty
     public boolean isEmpty()
     {
         return size() == 0;
     }
 
-    /**
-     * Returns true if this symbol table contains the specified key.
-     *
-     * @param  key the key
-     * @return {@code true} if this symbol table contains {@code key};
-     *         {@code false} otherwise
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
+    // checks if inputted key is in the ST
     public boolean contains(Key key)
     {
         return get(key) != null;
     }
 
-    /**
-     * Returns the value associated with the given key in this symbol table.
-     *
-     * @param  key the key
-     * @return the value associated with the given key if the key is in the symbol table
-     *     and {@code null} if the key is not in the symbol table
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
+    // takes key as input and returns the associated value
     public Value get(Key key)
     {
         for (Node x = first; x != null; x = x.next) {
@@ -78,16 +56,7 @@ public class SequentialSearchST<Key, Value> {
         return null;
     }
 
-    /**
-     * Inserts the specified key-value pair into the symbol table, overwriting the old
-     * value with the new value if the symbol table already contains the specified key.
-     * Deletes the specified key (and its associated value) from this symbol table
-     * if the specified value is {@code null}.
-     *
-     * @param  key the key
-     * @param  val the value
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
+    // takes key and value as input and puts them in the ST
     public void put(Key key, Value val)
     {
         for (Node x = first; x != null; x = x.next)
@@ -102,42 +71,8 @@ public class SequentialSearchST<Key, Value> {
         n++;
     }
 
-    /**
-     * Removes the specified key and its associated value from this symbol table
-     * (if the key is in this symbol table).
-     *
-     * @param  key the key
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
-    public void delete(Key key)
+    public Iterable<Key> keys()
     {
-        first = delete(first, key);
-    }
-
-    // delete key in linked list beginning at Node x
-    // warning: function call stack too large if table is large
-    private Node delete(Node x, Key key)
-    {
-        if (x == null)
-            return null;
-        if (key.equals(x.key))
-        {
-            n--;
-            return x.next;
-        }
-        x.next = delete(x.next, key);
-        return x;
-    }
-
-
-    /**
-     * Returns all keys in the symbol table as an {@code Iterable}.
-     * To iterate over all of the keys in the symbol table named {@code st},
-     * use the foreach notation: {@code for (Key key : st.keys())}.
-     *
-     * @return all keys in the symbol table
-     */
-    public Iterable<Key> keys()  {
         Queue<Key> queue = new Queue<Key>();
         for (Node x = first; x != null; x = x.next)
             queue.enqueue(x.key);

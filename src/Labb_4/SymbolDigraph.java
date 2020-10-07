@@ -4,13 +4,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/*
+README
+    A symbol graph is a graph that has corresponding string names as vertices instead of integers.
+    Used in task 3 to represent the states of america in numerical form
+*/
 public class SymbolDigraph
 {
     private SequentialSearchST<String, Integer> st;  // string -> index
     private String[] keys;           // index  -> string
     private Digraph digraph;             // the underlying graph
 
-
+    // takes a file and a delimiter such as space or , and creates a corresponding graph with numerical values as vertices
     public SymbolDigraph(File file, String delimiter) throws FileNotFoundException
     {
         st = new SequentialSearchST<String, Integer>();
@@ -33,8 +38,7 @@ public class SymbolDigraph
             keys[st.get(name)] = name;
         }
 
-        // second pass builds the graph by connecting first vertex on each
-        // line to all others
+        // second pass builds the graph by connecting first vertex on each line to all others
         digraph = new Digraph(st.size());
         in = new Scanner(file);
         while (in.hasNextLine())
@@ -50,53 +54,26 @@ public class SymbolDigraph
         in.close();
     }
 
-
-    public boolean contains(String s)
-    {
-        return st.contains(s);
-    }
-
-
-    @Deprecated
-    public int index(String s)
-    {
-        return st.get(s);
-    }
-
-
+    // returns the representing vertice of a symbol
     public int indexOf(String s)
     {
         return st.get(s);
     }
 
-
-    @Deprecated
-    public String name(int v)
-    {
-        validateVertex(v);
-        return keys[v];
-    }
-
+    // returns the representing symbol of a vertice
     public String nameOf(int v)
     {
         validateVertex(v);
         return keys[v];
     }
 
-
-    @Deprecated
-    public Digraph G()
+    // returns the digraph using numerical values representing the symbol digraph
+    public Digraph digraph()
     {
         return digraph;
     }
 
-
-    public Digraph graph()
-    {
-        return digraph;
-    }
-
-    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    // throw an IllegalArgumentException if v is out of bounds
     private void validateVertex(int v)
     {
         int V = digraph.V();

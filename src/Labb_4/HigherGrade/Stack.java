@@ -1,7 +1,12 @@
 package Labb_4.HigherGrade;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
+/*
+README
+    Stack datastructure, last in first out
+*/
 public class Stack<Item> implements Iterable<Item>
 {
     private Node<Item> first;     // top of stack
@@ -14,24 +19,24 @@ public class Stack<Item> implements Iterable<Item>
         private Node<Item> next;
     }
 
-
+    // constructor
     public Stack()
     {
         first = null;
         n = 0;
     }
 
-
+    // return true if empty
     public boolean isEmpty() {
         return first == null;
     }
 
-
+    // returns size
     public int size() {
         return n;
     }
 
-
+    // push new item onto stack
     public void push(Item item)
     {
         Node<Item> oldfirst = first;
@@ -41,11 +46,16 @@ public class Stack<Item> implements Iterable<Item>
         n++;
     }
 
-    public Item peek()
+    // return item at the top of the stack and remove it from stack
+    public Item pop()
     {
-        return first.item;
+        if (isEmpty())
+            throw new NoSuchElementException("Stack underflow");
+        Item item = first.item;
+        first = first.next;
+        n--;
+        return item;
     }
-
 
     public String toString()
     {
@@ -64,7 +74,7 @@ public class Stack<Item> implements Iterable<Item>
         return new LinkedIterator(first);
     }
 
-    // an iterator, doesn't implement remove() since it's optional
+    // java built in iterator
     private class LinkedIterator implements Iterator<Item>
     {
         private Node<Item> current;

@@ -6,7 +6,11 @@ import Labb_4.SymbolGraph;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+/*
+README
+    Uses breadth-first search to find the shortest path from an inputted start state to an inputted end state.
+    Prints out the path.
+*/
 public class FindPathBSFTest
 {
     public static void main(String[] args) throws FileNotFoundException
