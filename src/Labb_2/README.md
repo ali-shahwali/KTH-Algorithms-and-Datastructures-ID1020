@@ -1,24 +1,22 @@
-## Task 1
-Simple insertion sort algorithm, we start at array index 1 and continuously 
-compare with the element to the left until we reach index 0, then we increment
-to index 2 and repeat until we reach the final element.
-We do this with a nested for-loop giving us the worst case time complexity O(n²).
-We print the array after each inner loop using Arrays.toString()
-## Task 2
-To count the number of swaps we simply create a variable named "swaps" and
-increment during each iteration of the inner for-loop.
-## Task 3
-An inversion is every pair of elements which in the context of the array is out-of-order
-For example the array containing [3,2,4,1] has inversions (3-2) (3-1) (2-4) and (4-1).
-To find every inversion we use a similar algorithm as insertion sort, we start at index 0
-and using a nested for-loop we check for every inversion by iterating through the array.
-We concatenate each inversion to a string and return said string. In the worst case 
-we also have O(n²) time complexity.
-## Task 4
-To sort all the negative numbers on to the lower half of the array we have 2 variables starting at index
-0 in our array, we call these 'i' and 'j', we iterate 'i' through the array and when we encounter a negative
-number we perform a swap with the elements at 'i' and 'j'. We do this until we have iterated through the array once.
-The for-loop is optimized as to skip any swaps which would swap a negative number with another negative number.
-In the worst case we have to iterate through the entire array and perform a swap every time, this gives us the time
-complexity O(n).
-## Task 5
+#Lab: Sorting
+###Programming assignments for grade E:
+
+#####Implement insertionsort. Augment the sorting process so that all the content of the array that is being sorted is printed after each inner loop iteration. Write a unit test in main() which allows the user to define the size of the input (N) and then input (N) integers from stdin which is to be sorted.
+
+#####Augment the above implementation so that it prints the number of swaps performed when sorting the array.
+
+#####Add a method which counts the number of inversions in the input array and prints a list of all inversions on the format [i,a[i]], [j, a[j]] where i and j are indices and a[i], a[j] are the values of the elements. Call the method from main() before the array is sorted. Calculate the time complexity for the algorithm.
+
+#####Implement a function in C which takes an array of integers (both positive and negative) and orders the elements in the array so that all negative elements come before the positive. You are not allowed to sort the array - only collect all negative values first. The algorithm should only use O(1) extra memory (i.e. be in-place Wikipedia: In-place algorithm (Länkar till en externa sida.)Länkar till en externa sida.)
+
+#####Compare the execution times for sorting large arrays of integers with insertionsort and merge sort. When should one select mergesort over insertionsort? Upload code, tests and a graphs depicting the execution times as a function of input (what parameters in the input could be relevant?).
+
+#####Experiment with the cut-off to insertionsort in merge. How is the execution time affected by different values for the cut-off? A suitable range for cut-off values to test with could be [0-30]. Upload code, tests and a graphs.
+
+###Higher grade problem
+
+#####Augment the test code from assignment 1 so that the array is sorted in descending order instead of ascending order (you may add O(N) operations)
+
+#####Compare the execution times for sorting large arrays of integers with quicksort and merge sort. When should one select quicksort over mergesort?
+
+#####Compare the execution times of quicksort where the first element in each sub-array is selected as partitioning element to that of quicksort with median-of-three partitioning
